@@ -1,0 +1,1 @@
+<view class="indexcoupons-container data-v-b527951c"><scroll-view class="scroll-view noScorll data-v-b527951c" scroll-x="{{true}}"><block wx:for="{{list}}" wx:for-item="item" wx:for-index="index" wx:key="index"><coupons-item vue-id="{{'081af9d4-1-'+index}}" data="{{item}}" class="data-v-b527951c" bind:__l="__l"></coupons-item></block></scroll-view></view>

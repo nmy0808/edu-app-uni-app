@@ -1,0 +1,1 @@
+<view class="coupons-item data-v-fa872738"><view class="coupons-item-left  data-v-fa872738"><view class="coupons-price text-ellipsis data-v-fa872738">{{"¥ "+data.price}}</view><view class="coupons-tprice text-ellipsis data-v-fa872738">{{'适用: '+data.value.title+''}}</view></view><view class="coupons-item-right data-v-fa872738">领取</view></view>

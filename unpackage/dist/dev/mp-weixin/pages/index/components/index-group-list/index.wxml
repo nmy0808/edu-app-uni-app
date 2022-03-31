@@ -1,0 +1,1 @@
+<view class="indexgrouplist-container data-v-45737d06"><index-title vue-id="68fb21ae-1" title="拼团" move="查看更多" isMove="{{true}}" class="data-v-45737d06" bind:__l="__l"></index-title><course-list vue-id="68fb21ae-2" data="{{list}}" class="data-v-45737d06" bind:__l="__l"></course-list></view>
