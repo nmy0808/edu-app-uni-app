@@ -6,7 +6,7 @@
 		</view>
 		<view class="course-item-desc">
 			<view class="course-item-desc-title text-ellipsis">{{ data.title }}</view>
-			<view class="course-item-desc-subtitle text-ellipsis">
+			<view v-if="data.try" class="course-item-desc-subtitle text-ellipsis">
 				{{ data.try }}
 			</view>
 			<view class="course-item-desc-price">
