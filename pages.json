@@ -20,6 +20,9 @@
 			"style": {
 				"navigationBarTitleText": "我的",
 				"enablePullDownRefresh": false
+				// #ifndef MP
+				,"navigationStyle": "custom"
+				// #endif
 			}
 
 		}

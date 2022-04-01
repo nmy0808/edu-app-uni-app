@@ -78,7 +78,6 @@ export default {
 		};
 	},
 	onLoad() {
-		this.getData();
 	},
 	onReady() {},
 	methods: {
