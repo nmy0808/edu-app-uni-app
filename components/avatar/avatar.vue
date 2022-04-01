@@ -36,6 +36,7 @@ export default {
 
 <style lang="scss" scoped>
 .avatar-container {
+	background-color: white;
 	&.circle {
 		border-radius: 50%;
 	}

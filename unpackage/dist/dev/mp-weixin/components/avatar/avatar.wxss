@@ -25,6 +25,9 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.avatar-container.data-v-1f255a24 {
+  background-color: white;
+}
 .avatar-container.circle.data-v-1f255a24 {
   border-radius: 50%;
 }

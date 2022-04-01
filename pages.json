@@ -26,7 +26,40 @@
 			}
 
 		}
-	],
+	    ,{
+            "path" : "pages/login/login",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "登录",
+                "enablePullDownRefresh": false
+								// #ifndef MP
+								,"navigationStyle": "custom"
+								// #endif
+            }
+            
+        }
+        ,{
+            "path" : "pages/find-password/find-password",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+								// #ifndef MP
+								,"navigationStyle": "custom"
+								// #endif
+            }
+            
+        }
+        ,{
+            "path" : "pages/bind-phone/bind-phone",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

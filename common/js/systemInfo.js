@@ -1,5 +1,5 @@
 // import store from '@/store'
-export default handle = () => {
+export default  () => {
 	return new Promise((resolve, reject) => {
 		uni.getSystemInfo({
 			success: e => {

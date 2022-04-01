@@ -2,7 +2,10 @@
   "pages": [
     "pages/index/index",
     "pages/learn/learn",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/login/login",
+    "pages/find-password/find-password",
+    "pages/bind-phone/bind-phone"
   ],
   "subPackages": [],
   "window": {
@@ -39,6 +42,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "usingComponents": {}
 }

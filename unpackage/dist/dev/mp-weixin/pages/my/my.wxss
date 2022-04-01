@@ -29,6 +29,28 @@
   background-color: #5ccb84;
   height: 360rpx;
   text-align: center;
+}
+.my-page .my-user.data-v-0be17cc6 {
+  display: flex;
+  padding-top: 50rpx;
+  box-sizing: border-box;
+  background-color: #5ccb84;
+  height: 360rpx;
   border-radius: 0 0 80rpx 80rpx;
+}
+.my-page .my-user .user-desc.data-v-0be17cc6 {
+  margin-left: 20rpx;
+  color: white;
+}
+.my-page .my-user .user-desc .user-top.data-v-0be17cc6 {
+  margin-top: 16rpx;
+  font-size: 16;
+}
+.my-page .my-user .user-desc .user-top.username.data-v-0be17cc6 {
+  font-size: 14px;
+}
+.my-page .my-user .user-desc .user-bottom.data-v-0be17cc6 {
+  margin-top: 10rpx;
+  font-size: 12px;
 }
 
