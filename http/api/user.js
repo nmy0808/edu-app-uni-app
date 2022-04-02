@@ -73,7 +73,7 @@ export const findPasswordApi= ({phone, code, password, repassword}) => {
 /**
  * 修改资料
  */
-export const updateInfoApi= (avatar, nickname, sex) => {
+export const updateInfoApi= ({ avatar, nickname, sex }) => {
 	const url = '/mobile/update_info'
 	const data = { avatar, nickname, sex }
 	const options = {}

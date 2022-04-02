@@ -101,7 +101,9 @@ export default {
 			await this.$http.findPasswordApi(params);
 			this.toast('修改成功');
 			setTimeout(() => {
-				this.navTo('/pages/login/login');
+				uni.redirectTo({
+					url: '/pages/login/login'
+				})
 			}, 1000);
 		},
 		async handleSendCode() {

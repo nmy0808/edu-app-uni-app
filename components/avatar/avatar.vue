@@ -8,7 +8,7 @@
 		:class="{
 			circle: circle
 		}"
-		src="@/static/default/default_avatar.png"
+		:src="img || '/static/default/default_avatar.png'"
 		mode=""
 	></image>
 </template>
@@ -17,6 +17,10 @@
 export default {
 	name:"avatar",
 	props:{
+		img:{
+			type: String,
+			default: ''
+		},
 		size: {
 			type: Number,
 			default: 120

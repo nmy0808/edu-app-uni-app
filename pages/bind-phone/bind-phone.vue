@@ -80,6 +80,7 @@ export default {
 			params.phone = this.formData.phone + ''
 			params.code = this.formData.code + ''
 			await this.$http.bindMobileApi(params)
+			this.$store.commit('user/setPhone', params.phone)
 			this.toast('绑定成功')
 			setTimeout(()=>{
 				this.navBack(2)

@@ -9,42 +9,52 @@
 			color="white"
 		></uni-nav-bar>
 		<!-- header -->
-		<view class="my-user app-container">
-			<avatar></avatar>
-			<!-- 判断登录: 显示用户名还是登录按钮 -->
-			<template v-if="true">
-				<view class="user-desc" @click.stop="navTo('/pages/login/login')">
+		<template v-if="!userInfo">
+			<view
+				class="my-user app-container"
+				@click.stop="navTo('/pages/login/login')"
+			>
+				<avatar></avatar>
+				<!-- 判断登录: 显示用户名还是登录按钮 -->
+				<view class="user-desc">
 					<view class="user-top">立即登录</view>
 					<view class="user-bottom">登录解锁更多功能</view>
 				</view>
-			</template>
-			<template v-else>
-				<view class="user-desc username" @click.stop="handleLogin">
-					<view class="user-top">用户名</view>
-					<view class="user-bottom">暂无描述</view>
+			</view>
+		</template>
+		<template v-else>
+			<view class="my-user app-container" @click.stop="toPageUserInfo">
+				<avatar :img='userInfo.avatar'></avatar>
+				<!-- 判断登录: 显示用户名还是登录按钮 -->
+				<view class="user-desc username">
+					<view class="user-top">
+						{{ userInfo.nickname || userInfo.username }}
+					</view>
+					<view class="user-bottom">{{ userInfo.desc || '暂无描述' }}</view>
 				</view>
-			</template>
-		</view>
+			</view>
+		</template>
 		<!-- 订单菜单 -->
 		<!-- 菜单列表 -->
 	</view>
 </template>
 
 <script>
+import { mapState, mapGetters, mapActions, mapMutations } from 'vuex';
 export default {
 	data() {
-		return {
-		};
+		return {};
 	},
-	created() {
-		console.log(this.$getRoute());
+	created() {},
+	computed: {
+		...mapState('user', ['userInfo'])
 	},
-	methods:{
-		toPageLogin(){
-			this
+	methods: {
+		toPageLogin() {
+			this;
 		},
-		handleLogin(){
-			console.log(1);
+		toPageUserInfo() {
+			this.navTo('/pages/userinfo/userinfo')
 		}
 	}
 };
@@ -70,7 +80,7 @@ export default {
 			.user-top {
 				margin-top: 16rpx;
 				font-size: $uni-font-size-lg;
-				&.username{
+				&.username {
 					font-size: $uni-font-size-base;
 				}
 			}

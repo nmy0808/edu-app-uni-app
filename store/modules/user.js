@@ -6,8 +6,8 @@ export default {
 	// 通过 state 声明数据
 	state: () => {
 		return {
-			userInfo: uni.getStorageInfoSync(sotrageKey.USERINFO) || '',
-			token: uni.getStorageInfoSync(sotrageKey.TOKEN) || ''
+			userInfo: uni.getStorageSync(sotrageKey.USERINFO) || '',
+			token: uni.getStorageSync(sotrageKey.TOKEN) || ''
 		};
 	},
 	mutations: {
@@ -21,6 +21,10 @@ export default {
 		},
 		setToken(state, token){
 			state.token = token
+			this.commit('user/asyncStorage')
+		},
+		setPhone(state, phone){
+			state.userInfo.phone = phone
 			this.commit('user/asyncStorage')
 		},
 		clearAll(state){
@@ -49,6 +53,22 @@ export default {
 		async logout(ctx){
 			await logoutApi();
 			ctx.commit('clearAll')
+		},
+		/**
+		 * 修改个人资料
+		 */
+		async updateUserInfo(ctx, userInfo){
+			const temp = JSON.parse(JSON.stringify(ctx.state.userInfo))
+			Object.keys(userInfo).forEach(key=>{
+				temp[key] = userInfo[key]
+			})
+			await $http.updateInfoApi(temp)
+			ctx.commit('setUserInfo', temp)
+			uni.hideToast({
+				title: '修改成功',
+				icon: 'none'
+			})
+			return true
 		}
 	}
 };
