@@ -21,14 +21,15 @@
 						<uni-easyinput
 							class="input-code"
 							prefixIcon="chat"
-							v-model="formData.code"
+							v-model="formData.phone"
 							:styles="{ background: '#cccccc' }"
-							placeholder="请输入验证码"
+							placeholder="请输入手机号"
 							type="number"
 							maxlength="11"
 						/>
 						<send-code class="send-code" @send="handleSendCode"></send-code>
 					</view>
+					</uni-forms-item>
 				<uni-forms-item name="code">
 					<uni-easyinput
 						prefixIcon="chat"
@@ -58,8 +59,8 @@ export default {
 	data() {
 		return {
 			formData: {
-				phone: '',
-				code: '',
+				phone: 13100889930,
+				code: null,
 			}
 		};
 	},
@@ -75,6 +76,26 @@ export default {
 			// await this.$refs.form.validateField('phone');
 			// // 重置验证
 			// await this.$refs.form.resetFields()
+			const params = {}
+			params.phone = this.formData.phone + ''
+			params.code = this.formData.code + ''
+			await this.$http.bindMobileApi(params)
+			this.toast('绑定成功')
+			setTimeout(()=>{
+				this.navBack(2)
+			}, 1000)
+		},
+		async handleSendCode(){
+			// 指定字段验证
+			await this.$refs.form.validateField('phone');
+			const params = {}
+			params.phone = this.formData.phone
+			// 绑定手机
+			const {data} = await this.$http.getCaptchaApi(params.phone)
+			uni.showToast({
+				title: '123123',
+				icon: 'none'
+			})
 		}
 	}
 };

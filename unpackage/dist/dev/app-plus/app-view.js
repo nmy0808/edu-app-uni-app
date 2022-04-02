@@ -7840,7 +7840,7 @@ var render = function() {
                         model: {
                           value: _vm._$g(8, "v-model"),
                           callback: function() {},
-                          expression: "formData.code"
+                          expression: "formData.phone"
                         }
                       }),
                       _c("send-code", {
@@ -7854,22 +7854,22 @@ var render = function() {
                       })
                     ],
                     1
-                  ),
-                  _c(
-                    "uni-forms-item",
-                    { attrs: { _i: 10 } },
-                    [
-                      _c("uni-easyinput", {
-                        attrs: { _i: 11 },
-                        model: {
-                          value: _vm._$g(11, "v-model"),
-                          callback: function() {},
-                          expression: "formData.code"
-                        }
-                      })
-                    ],
-                    1
                   )
+                ],
+                1
+              ),
+              _c(
+                "uni-forms-item",
+                { attrs: { _i: 10 } },
+                [
+                  _c("uni-easyinput", {
+                    attrs: { _i: 11 },
+                    model: {
+                      value: _vm._$g(11, "v-model"),
+                      callback: function() {},
+                      expression: "formData.code"
+                    }
+                  })
                 ],
                 1
               ),

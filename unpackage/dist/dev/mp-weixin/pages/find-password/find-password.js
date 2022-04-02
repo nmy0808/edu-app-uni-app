@@ -162,7 +162,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 26));
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 26));
 
 
 
@@ -250,18 +250,34 @@ var _rules = _interopRequireDefault(__webpack_require__(/*! @/common/js/rules.js
     this.$refs.form.setRules((0, _rules.default)());
   },
   methods: {
-    handleSubmit: function handleSubmit(e) {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+    handleSubmit: function handleSubmit(e) {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var params;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
 
                   _this.$refs.form.validate());case 2:
                 // // 指定字段验证
                 // await this.$refs.form.validateField('phone');
                 // // 重置验证
                 // await this.$refs.form.resetFields()
-                _this.navBack();case 3:case "end":return _context.stop();}}}, _callee);}))();
+                params = {};
+                params.phone = _this.formData.phone;
+                params.code = _this.formData.code;
+                params.password = _this.formData.password;
+                params.repassword = _this.formData.repassword;_context.next = 9;return (
+                  _this.$http.findPasswordApi(params));case 9:
+                _this.navBack();case 10:case "end":return _context.stop();}}}, _callee);}))();
     },
-    handleSendCode: function handleSendCode() {
-      console.log('发送le ');
+    handleSendCode: function handleSendCode() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var params, _yield$_this2$$http$g, data;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+
+                  _this2.$refs.form.validateField('phone'));case 2:
+                params = {};
+                params.phone = _this2.formData.phone;
+                // 绑定手机
+                _context2.next = 6;return _this2.$http.getCaptchaApi(params.phone);case 6:_yield$_this2$$http$g = _context2.sent;data = _yield$_this2$$http$g.data;
+                uni.showToast({
+                  title: data,
+                  icon: 'none' });case 9:case "end":return _context2.stop();}}}, _callee2);}))();
+
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

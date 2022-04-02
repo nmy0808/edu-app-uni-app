@@ -247,16 +247,17 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
-var _rules = _interopRequireDefault(__webpack_require__(/*! @/common/js/rules.js */ 241));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
+var _vuex = __webpack_require__(/*! vuex */ 270);
+var _rules = _interopRequireDefault(__webpack_require__(/*! @/common/js/rules.js */ 241));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
 {
   data: function data() {
     return {
       type: 'login', // reg: 注册
 
       formData: {
-        username: '',
-        password: '',
-        repassword: '' },
+        username: 'nmymay01',
+        password: '123123',
+        repassword: '123123' },
 
       readme: [0] };
 
@@ -265,10 +266,11 @@ var _rules = _interopRequireDefault(__webpack_require__(/*! @/common/js/rules.js
     // 需要在onReady中设置规则
     this.$refs.form.setRules((0, _rules.default)());
   },
-  methods: {
+  methods: _objectSpread(_objectSpread({},
+  (0, _vuex.mapActions)('user', ['login'])), {}, {
     /**
-              * 切换注册/登录
-              */
+                                                    * 切换注册/登录
+                                                    */
     handleSwitchType: function handleSwitchType() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
 
                   _this.$refs.form.resetFields());case 2:
@@ -278,17 +280,38 @@ var _rules = _interopRequireDefault(__webpack_require__(/*! @/common/js/rules.js
                   _this.type = 'login';
                 }case 3:case "end":return _context.stop();}}}, _callee);}))();
     },
-    handleSubmit: function handleSubmit(e) {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var isRead;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+    /**
+        *   提交
+        */
+    handleSubmit: function handleSubmit(e) {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var params, isRead, _yield$_this2$login, phone;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
 
                   _this2.$refs.form.validate());case 2:
+                params = {};
+                params.username = _this2.formData.username;
+                params.password = _this2.formData.password;
+                // 登录
+                if (!(_this2.type === 'login')) {_context2.next = 18;break;}
                 isRead = !!_this2.readme[0];if (
-                isRead) {_context2.next = 6;break;}
-                _this2.toast('请先阅读协议并勾选同意');return _context2.abrupt("return");case 6:case "end":return _context2.stop();}}}, _callee2);}))();
+                isRead) {_context2.next = 10;break;}
+                _this2.toast('请先阅读协议并勾选同意');return _context2.abrupt("return");case 10:_context2.next = 12;return (
 
 
+                  _this2.login(params));case 12:_yield$_this2$login = _context2.sent;phone = _yield$_this2$login.phone;
+                _this2.toast('登录成功');
+                // 判断 是否绑定手机号
+                setTimeout(function () {
+                  if (phone) {
+                    _this2.navBack();
+                  } else {
+                    _this2.navTo('/pages/bind-phone/bind-phone');
+                  }
+                }, 1000);_context2.next = 23;break;case 18:
 
-
-
+                // 注册
+                params.repassword = _this2.formData.repassword;_context2.next = 21;return (
+                  _this2.$http.registerApi(params));case 21:
+                _this2.toast('注册成功');
+                _this2.handleSwitchType();case 23:case "end":return _context2.stop();}}}, _callee2);}))();
 
     },
     toPageFindPassword: function toPageFindPassword() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:_context3.next = 2;return (
@@ -305,7 +328,7 @@ var _rules = _interopRequireDefault(__webpack_require__(/*! @/common/js/rules.js
       } else {
         this.handleSwitchType();
       }
-    } } };exports.default = _default;
+    } }) };exports.default = _default;
 
 /***/ }),
 

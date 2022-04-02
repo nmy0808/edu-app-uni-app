@@ -63,7 +63,7 @@
 			<view class="login-auth">
 				<image class="wx-icon" src="@/static/default/wx.png" mode=""></image>
 			</view>
-			<view class="login-readme">
+			<view class="login-readme" v-if="type==='login'">
 				<uni-data-checkbox
 					multiple
 					v-model="readme"
@@ -83,6 +83,7 @@
 </template>
 
 <script>
+import { mapState, mapGetters, mapActions, mapMutations } from 'vuex';
 import rules from '@/common/js/rules.js';
 export default {
 	data() {
@@ -90,9 +91,9 @@ export default {
 			type: 'login', // reg: 注册
 
 			formData: {
-				username: '',
-				password: '',
-				repassword: ''
+				username: 'nmymay01',
+				password: '123123',
+				repassword: '123123'
 			},
 			readme: [0]
 		};
@@ -102,6 +103,7 @@ export default {
 		this.$refs.form.setRules(rules());
 	},
 	methods: {
+		...mapActions('user', ['login']),
 		/**
 		 * 切换注册/登录
 		 */
@@ -114,18 +116,41 @@ export default {
 				this.type = 'login';
 			}
 		},
+		/**
+		 *   提交
+		 */
 		async handleSubmit(e) {
 			// 全部验证
 			await this.$refs.form.validate();
-			const isRead = !!this.readme[0];
-			if (!isRead) {
-				this.toast('请先阅读协议并勾选同意');
-				return;
+			const params = {};
+			params.username = this.formData.username;
+			params.password = this.formData.password;
+			// 登录
+			if(this.type === 'login'){
+				const isRead = !!this.readme[0];
+				if (!isRead) {
+					this.toast('请先阅读协议并勾选同意');
+					return;
+				}
+				const { phone } = await this.login(params);
+				this.toast('登录成功');
+				// 判断 是否绑定手机号
+				setTimeout(() => {
+					if (phone) {
+						uni.switchTab({
+							url: '/pages/index/index'
+						})
+					} else {
+						this.navTo('/pages/bind-phone/bind-phone');
+					}
+				}, 1000);
+			}else{
+				// 注册
+				params.repassword = this.formData.repassword;
+				await this.$http.registerApi(params);
+				this.toast('注册成功');
+				this.handleSwitchType()
 			}
-			// // 指定字段验证
-			// await this.$refs.form.validateField('phone');
-			// // 重置验证
-			// await this.$refs.form.resetFields()
 		},
 		async toPageFindPassword() {
 			// 重置验证

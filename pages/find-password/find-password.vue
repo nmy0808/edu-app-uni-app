@@ -93,10 +93,28 @@ export default {
 			// await this.$refs.form.validateField('phone');
 			// // 重置验证
 			// await this.$refs.form.resetFields()
-			this.navBack()
+			const params = {};
+			params.phone = this.formData.phone;
+			params.code = this.formData.code;
+			params.password = this.formData.password;
+			params.repassword = this.formData.repassword;
+			await this.$http.findPasswordApi(params);
+			this.toast('修改成功');
+			setTimeout(() => {
+				this.navTo('/pages/login/login');
+			}, 1000);
 		},
-		handleSendCode() {
-			console.log('发送le ');
+		async handleSendCode() {
+			// 指定字段验证
+			await this.$refs.form.validateField('phone');
+			const params = {};
+			params.phone = this.formData.phone;
+			// 绑定手机
+			const { data } = await this.$http.getCaptchaApi(params.phone);
+			uni.showToast({
+				title: data,
+				icon: 'none'
+			});
 		}
 	}
 };
