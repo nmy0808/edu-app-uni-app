@@ -68,6 +68,33 @@
             }
             
         }
+        ,{
+          "path" : "pages/order/order",
+          "style" :                                                                                    
+          {
+              "navigationBarTitleText": "订单",
+              "enablePullDownRefresh": false
+          }
+          
+      }
+        ,{
+            "path" : "pages/setting/setting",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的设置",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/update-password/update-password",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "修改密码",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

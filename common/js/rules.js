@@ -24,6 +24,11 @@ export default () => {
 				}
 			]
 		},
+		opassword: {
+			rules: [
+				{ required: true, errorMessage: '请输入原密码' }
+			]
+		},
 		repassword: {
 			rules: [
 				{ required: true, errorMessage: '请输入密码' },
