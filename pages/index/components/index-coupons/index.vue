@@ -20,6 +20,13 @@ export default {
 	},
 	created() {
 		this.getCouponList()
+		
+	},
+	mounted() {
+		uni.$on('login',this.getCouponList)
+	},
+	destroyed() {
+		uni.$off('login',this.getCouponList)
 	},
 	methods: {
 		async getCouponList() {

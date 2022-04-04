@@ -53,7 +53,6 @@ export default {
 			params.limit = size;
 			const { data } = await this.$http.getOrderListApi(params);
 			page === 1 ? (this.list = data.rows) : (this.list = this.list.concat(data.rows));
-			console.log(data.rows);
 			this.$refs.mescrollRef.mescroll.endBySize(data.rows.length, data.count);
 		}
 	},

@@ -45,7 +45,7 @@ export default {
 			const { data } = await $http.loginApi(params);
 			ctx.commit('setUserInfo', data)
 			ctx.commit('setToken', data.token)
-			console.log(data);
+			uni.$emit('login')
 			return data
 		},
 		/**
@@ -54,6 +54,7 @@ export default {
 		async logout(ctx){
 			await $http.logoutApi();
 			ctx.commit('clearAll')
+			uni.$emit('login')
 		},
 		/**
 		 * 修改个人资料
