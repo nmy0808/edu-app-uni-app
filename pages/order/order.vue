@@ -6,28 +6,28 @@
 			@down="downCallback"
 			@init="mescrollInit"
 		>
-			<!-- <view class="order-page-item shadow">
+			<view class="order-page-item shadow" v-for="(item,index) in list" :key='index'>
 					<view class="order-header">
 						<view class="order-num">
-							订单编号: 231222221123224234231
+							订单编号: {{item.no}}
 						</view>
 						<view class="order-date">
-							订单时间: 2022-12-22 00:00:00
+							订单时间: {{item.created_time}}
 						</view>
 					</view>
 					<view class="order-content">
-						[专栏] 第一个专栏
+						{{item.goods}}
 					</view>
 				
 					<view class="order-bottom">
 						<view class="order-status await">
-							等待支付
+							{{typeMap[item.status]}}
 						</view>
 						<view class="order-price">
-							¥ 10.00
+							¥ {{item.price}}
 						</view>
 					</view>
-				</view> -->
+				</view>
 		</mescroll-body>
 	</view>
 </template>
@@ -38,7 +38,12 @@ export default {
 	mixins: [MescrollMixin],
 	components: {},
 	data: () => ({
-		list: []
+		list: [],
+		typeMap: {
+			closed: '已取消',
+			pendding: '等待支付',
+			success: '支付完成',
+		}
 	}),
 	computed: {},
 	methods: {
@@ -47,8 +52,8 @@ export default {
 			params.page = page;
 			params.limit = size;
 			const { data } = await this.$http.getOrderListApi(params);
-			page === 1 ? (this.list = data) : (this.list = this.list.concat(data));
-			// console.log(data.rows);
+			page === 1 ? (this.list = data.rows) : (this.list = this.list.concat(data.rows));
+			console.log(data.rows);
 			this.$refs.mescrollRef.mescroll.endBySize(data.rows.length, data.count);
 		}
 	},
@@ -62,6 +67,7 @@ export default {
 .order-page {
 	.order-page-item {
 		margin: $uni-spacing-container;
+		margin-top: 40rpx;
 		padding: 0 $uni-spacing-container;
 		.order-header {
 			font-size: $uni-font-size-sm;
