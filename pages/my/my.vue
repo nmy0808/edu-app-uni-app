@@ -84,7 +84,7 @@ export default {
         } },
         { icon: "chat", text: "消息", handle: () => {} },
         { icon: "star", text: "收藏", handle: () => {} },
-        { icon: "map", text: "再学", handle: () => {} },
+        { icon: "map", text: "在学", handle: () => {} },
       ],
     };
   },

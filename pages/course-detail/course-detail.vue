@@ -1,0 +1,115 @@
+<template>
+	<view class="course-detail-page">
+		<video
+		v-if="type === 'video'"
+			:src="detailData.content"
+			class="w-100"
+			controls
+			:poster="detailData.cover"
+		></video>
+		<template v-if="type==='audio'">
+			<image :src="detailData.cover" mode=""  class="course-detail-cover"></image>
+			<audio-play></audio-play>
+		</template>
+		<view class="course-detail-header app-container">
+			<view class="course-detail-title text-ellipsis">
+				{{detailData.title}}
+			</view>
+			<view class="course-detail-subtitle ">
+					<view class="">
+						{{ detailData.sub_count }} 人学过
+					</view>
+					<uni-icons class="icon-star" :type="detailData.isfava?'star-filled':'star'" size="26" color="#f4d200"></uni-icons>
+			</view>
+		</view>
+		<divider></divider>
+		<view class="course-detail-content app-container">
+			<view class="detail-title">
+				课程简介
+			</view>
+			<!-- 不需要引入，可直接使用 -->
+			<mp-html :content="type=='media' ? detailData.content : detailData.try" :key='id'/>
+		</view>
+		<view class="course-detail-buy">
+			<button class="course-buy-btn">立即订购 ¥{{detailData.price}}</button>
+		</view>
+	</view>
+</template>
+
+<script>
+export default {
+	data() {
+		return {
+			id: null,
+			detailData: {},
+			type: null
+		};
+	},
+	onLoad(e) {
+		this.id = e.id;
+		this.getData();
+	},
+	methods: {
+		async getData() {
+			const params = {};
+			params.id = this.id;
+			const { data } = await this.$http.getCourseDetailApi(params);
+			uni.setNavigationBarTitle({
+				title: data.title
+			});
+			this.detailData = data;
+			this.type = data.type
+			console.log(data);
+		}
+	}
+};
+</script>
+
+<style lang="scss" scoped>
+	.course-detail-page{
+		padding-bottom: 50px;
+		.course-detail-cover{
+			width: 710rpx;
+			height: 400rpx;
+			border-radius: 30rpx;
+			transform: translateX(20rpx);
+		}
+		.course-detail-header{
+			padding-top: 30rpx;
+			padding-bottom: 30rpx;
+			.course-detail-title{
+				font-size: $uni-font-size-lg + 4px;
+			}
+			.course-detail-subtitle{
+				font-size: $uni-font-size-base;
+				color: $uni-color-subtitle;
+				display: flex;
+				justify-content: space-between;
+				margin-top: 20rpx;
+				align-items: center;
+			}
+		}
+		.course-detail-content{
+			margin-top: 30rpx;
+			.detail-title{
+				padding: 20rpx 0;
+				border-bottom: 1px solid $uni-img-default-color;
+				margin-bottom: 30rpx;
+			}
+		}
+		.course-detail-buy{
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			background-color: white;
+			padding: 20rpx;
+			box-sizing: border-box;
+		}
+		.course-buy-btn{
+			background-color: $uni-color-primary;
+			color: white;
+		}
+	}
+	
+</style>
