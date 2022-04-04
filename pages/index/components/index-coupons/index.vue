@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import typeMap from '@/typeMap/index.js'
 export default {
 	name: 'index-coupons',
 	data() {
@@ -23,9 +24,11 @@ export default {
 	methods: {
 		async getCouponList() {
 			const { data } = await this.$http.getCouponListApi();
-			console.log(222);
-			console.log(data);
+			data.forEach(it=>{
+				it.typeKey = typeMap[it.type]
+			})
 			this.list = data
+			console.log(data);
 		}
 	}
 };

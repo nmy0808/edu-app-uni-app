@@ -50,7 +50,7 @@
     </view>
     <!-- 列表 -->
     <uni-list :border="false" class='my-list'>
-      <uni-list-item clickable showArrow>
+      <uni-list-item clickable showArrow @click="toPageCoupon">
         <template slot="header">
           <uni-icons class="my-list-icon" type="wallet" color="" size="20" />
           <text class="my-list-label">我的优惠券</text>
@@ -101,6 +101,9 @@ export default {
     },
 		toPageSetting(){
 			this.navTo('/pages/setting/setting')
+		},
+		toPageCoupon(){
+			this.navTo('/pages/coupon/coupon')
 		}
   },
 };
