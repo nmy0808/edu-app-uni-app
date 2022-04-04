@@ -17,6 +17,9 @@
 				</uni-list-item>
 			</template>
 		</uni-list>
+		<button 
+			v-if="$store.state.user.token" 
+		type="default" class="mt-2" @click="handleLogout">退出登录</button>
 	</view>
 </template>
 
@@ -82,6 +85,10 @@ export default {
 					}
 				}
 			});
+		},
+		async handleLogout(){
+			await this.$store.dispatch('user/logout')
+			this.toast('已退出登录')
 		}
 	}
 };

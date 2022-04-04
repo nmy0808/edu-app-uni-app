@@ -30,6 +30,7 @@ export default {
 		clearAll(state){
 			state.token = ''
 			state.userInfo = ''
+			console.log(123123);
 			this.commit('user/asyncStorage')
 		}
 	},
@@ -51,7 +52,7 @@ export default {
 			* 退出登录
 			*/
 		async logout(ctx){
-			await logoutApi();
+			await $http.logoutApi();
 			ctx.commit('clearAll')
 		},
 		/**
