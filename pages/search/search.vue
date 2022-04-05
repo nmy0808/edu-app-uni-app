@@ -13,6 +13,14 @@
 		</view>
 		<!-- history -->
 		<template v-if="!showList">
+			<view class="history-header">
+				<view class="search-title">
+					历史记录
+				</view>
+				<view class="search-clear" @click='handleRemoveHistory'>
+					清除全部
+				</view>
+			</view>
 			<view class="history-list app-container">
 				<view
 					class="history-item text-ellipsis"
@@ -100,7 +108,7 @@ export default {
 		...mapState('history', ['history'])
 	},
 	methods: {
-		...mapMutations('history', ['setHistory']),
+		...mapMutations('history', ['setHistory', 'clearAll']),
 		search({ value }) {
 			this.keyWord = value.trim();
 			this.keyWord !== '' && this.setHistory(this.keyWord);
@@ -117,6 +125,16 @@ export default {
 			this.keyWord = val;
 			this.showList = true;
 			this.setHistory(val);
+		},
+		handleRemoveHistory(){
+			uni.showModal({
+				title: '清空全部历史记录?',
+				success:(e)=>{
+					if(e.confirm){
+						this.clearAll()
+					}
+				}
+			})
 		},
 		handlePageScroll(e) {
 			let item = this.$refs['mescrollItem_' + this.tabIndex];
@@ -140,9 +158,24 @@ export default {
 <style lang="scss" scoped>
 .search-page {
 	padding-top: var(--status-bar-height);
+	.history-header{
+		display: flex;
+		justify-content: space-between;
+		padding: 40rpx 40rpx;
+	}
+	.search-title{
+		text-align: right;
+		font-size: 16px;
+	}
+	.search-clear{
+		text-align: right;
+		font-size: 12px;
+		color: $uni-color-subtitle;
+	}
 	.history-list {
 		display: flex;
 		flex-wrap: wrap;
+		align-items: center;
 		.history-item {
 			padding: 8rpx 16rpx;
 			background-color: $uni-img-default-color;
