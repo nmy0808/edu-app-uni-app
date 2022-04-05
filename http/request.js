@@ -5,7 +5,7 @@ import {
 
 import storageKey from '@/store/sotrageKey.js'
 const request = (params) => {
-	uni.showLoading()
+	params.hideLoading || uni.showLoading()
 	const token = uni.getStorageSync('__LCEDU_TOKEN__')
 	return new Promise((resolve, reject) => {
 		uni.request({
@@ -37,7 +37,7 @@ const request = (params) => {
 				reject(err)
 			},
 			complete: () => {
-				uni.hideLoading()
+				params.hideLoading || uni.hideLoading()
 			}
 		});
 	})

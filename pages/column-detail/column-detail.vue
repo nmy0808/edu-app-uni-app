@@ -32,7 +32,7 @@
 			</view>
 		</template>
 		<template v-else>
-			<course-content :data='detailData.column_courses'></course-content>
+			<course-content :columnId='id' :data='detailData.column_courses'></course-content>
 		</template>
 		<view class="course-detail-buy">
 			<button class="course-buy-btn">立即订购 ¥{{ detailData.price }}</button>

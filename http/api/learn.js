@@ -17,6 +17,6 @@ export const getLearnHistoryListApi= ({ page, type }) => {
 export const updateLearnHistoryApi= ({ id, type, progress, detail_id }) => {
 	const url = '/mobile/user_history/update'
 	const data = {id, type, progress, detail_id }
-	const options = {}
+	const options = { hideLoading: true  }
 	return request.post(url, data, options)
 }

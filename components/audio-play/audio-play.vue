@@ -78,6 +78,12 @@ export default {
 		this.innerAudioContext.onTimeUpdate(() => {
 			if (this.isSlider) return;
 			this.currentTime = this.innerAudioContext.currentTime;
+			// 事件: 进度
+			const params = {}
+			params.detail = {}
+			params.detail.currentTime = this.currentTime
+			params.detail.duration = this.duration
+			this.$emit('progress', params)
 		});
 		// 总时长
 		this.innerAudioContext.onCanplay(() => {

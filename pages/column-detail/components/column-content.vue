@@ -12,7 +12,9 @@
 				<view class="column-content-title uni-ellipsis">{{ item.title }}</view>
 				<view class="column-tag-box">
 					<view class="column-tag-item">{{ typeMap[item.type] }}</view>
-					<view v-if="isFree(item.price)" class="column-tag-item free">试看</view>
+					<view v-if="isFree(item.price)" class="column-tag-item free">
+						试看
+					</view>
 				</view>
 			</view>
 		</view>
@@ -23,6 +25,10 @@
 import typeMap from '@/typeMap';
 export default {
 	props: {
+		columnId:{
+			type: Number,
+			default: null
+		},
 		data: {
 			type: Array,
 			default: () => {
@@ -44,10 +50,17 @@ export default {
 		isFree(v) {
 			return v === '0.00' || v === 0 || v === '0';
 		},
-		handleItemClick(item){
-			let url = '/pages/course-detail/course-detail'
-			url += `?id=${item.id}`
-			this.navTo(url)
+		async handleItemClick(item) {
+			let url = '/pages/course-detail/course-detail';
+			url += `?id=${item.id}`;
+			// 跳转
+			this.navTo(url);
+			// 更新学习进度
+			const params = {}
+			params.id = this.columnId
+			params.type = 'column'
+			params.detail_id = item.id
+			this.$http.updateLearnHistoryApi(params)
 		}
 	}
 };
@@ -86,7 +99,7 @@ export default {
 				font-size: $uni-font-size-sm;
 				border-radius: $uni-border-radius-sm;
 				margin-right: 20rpx;
-				&.free{
+				&.free {
 					border: 1px solid $uni-color-primary;
 					color: $uni-color-primary;
 				}
