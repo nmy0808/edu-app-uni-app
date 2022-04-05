@@ -44,12 +44,17 @@ export default {
 			num === 1
 				? (this.list = data.rows)
 				: (this.list = this.list.concat(data.rows));
-			console.log(data.rows);
 			this.mescroll.endBySize(this.list.length, 1);
 		},
 		handleItemClick(item){
 			const id = item.id
-			this.navTo('/pages/course-detail/course-detail?id=' + id)
+			let url = ''
+			if(!item.type){
+				url ='/pages/column-detail/column-detail?id=' + id
+			}else{
+				url ='/pages/course-detail/course-detail?id=' + id
+			}
+			this.navTo(url)
 		}
 	}
 };

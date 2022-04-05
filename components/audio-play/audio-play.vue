@@ -23,7 +23,7 @@
 			<view class="play-box">
 				<text class="play-btn iconfont mx-3 " :class="{ 'icon-tianchongxing-' : isPlay, 'icon-bofang2': !isPlay }"  @click="switchPlay"></text>
 			</view>
-			<text class="iconfont icon-shoucang1 audio-fav icon-btn" :class="{active: isfava}"></text>
+			<text class="iconfont icon-shoucang1 audio-fav icon-btn" :class="{active: isfava}" @click="$emit('collect')"></text>
 		</view>
 	</view>
 </template>

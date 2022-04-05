@@ -9,7 +9,7 @@
 		></video>
 		<template v-if="type==='audio'">
 			<image :src="detailData.cover" mode=""  class="course-detail-cover"></image>
-			<audio-play :url='detailData.content' :isfava='detailData.isfava'></audio-play>
+			<audio-play  :url='detailData.content' :isfava='detailData.isfava' @collect='handleCollect'></audio-play>
 		</template>
 		<view class="course-detail-header app-container">
 			<view class="course-detail-title text-ellipsis">
@@ -19,7 +19,9 @@
 					<view class="">
 						{{ detailData.sub_count }} 人学过
 					</view>
-					<uni-icons class="icon-star" :type="detailData.isfava?'star-filled':'star'" size="26" color="#f4d200"></uni-icons>
+					<uni-icons v-if="type!=='audio'" class="icon-star" :type="detailData.isfava?'star-filled':'star'" size="26" color="#f4d200" 
+					 @click='handleCollect'
+					 ></uni-icons>
 			</view>
 		</view>
 		<divider></divider>
@@ -42,7 +44,8 @@ export default {
 		return {
 			id: null,
 			detailData: {},
-			type: null
+			type: null,
+			fetchApi: { course: this.$http.getCourseDetailApi, column: this.$http.getColumnDetailApi }
 		};
 	},
 	onLoad(e) {
@@ -53,13 +56,27 @@ export default {
 		async getData() {
 			const params = {};
 			params.id = this.id;
-			const { data } = await this.$http.getCourseDetailApi(params);
+			const { data } = await  this.$http.getCourseDetailApi(params);
 			uni.setNavigationBarTitle({
 				title: data.title
 			});
 			this.detailData = data;
 			this.type = data.type
 			console.log(data);
+		},
+		/**
+		 * 收藏
+		 */
+		async handleCollect(){
+			const value = !this.detailData.isfava
+			const params = {}
+			params.goods_id = this.id
+			// `course`、`column`、`book`
+			params.type =  this.type !=='column' ? 'course' : 'column'
+			params.value =  this.value
+			await this.$http.setCollectApi(params)
+			this.toast(value?'已收藏':'取消收藏')
+			this.detailData.isfava = value
 		}
 	}
 };
