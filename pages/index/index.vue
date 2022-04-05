@@ -1,6 +1,7 @@
 <template>
-	<view class="home-page animate__animated animate__fadeIn"
-		:style="{'padding-top': statusBar}"
+	<view
+		class="home-page animate__animated animate__fadeIn"
+		:style="{ 'padding-top': statusBar }"
 	>
 		<mescroll-body
 			ref="mescrollRef"
@@ -12,14 +13,10 @@
 			<template v-for="(item, index) in detailData">
 				<view :key="index">
 					<!-- search -->
-					<!-- <view class="home-search" v-if="item.type === 'search'">
+					<view class="home-search" v-if="item.type === 'search'" @click="toPageSearch">
 						<uni-icons class="mr-1" type="search" size="15"></uni-icons>
 						{{ item.placeholder }}
-					</view> -->
-							<view class="home-search" v-if="item.type === 'search'">
-								<uni-icons class="mr-1" type="search" size="15"></uni-icons>
-								{{ item.placeholder }}
-							</view>
+					</view>
 					<!-- swiper -->
 					<index-swiper v-else-if="item.type === 'swiper'" :data="item.data" />
 					<!-- icon-category -->
@@ -64,7 +61,7 @@ import IconCategory from './components/icon-category/index.vue';
 import IndexCoupons from './components/index-coupons/index.vue';
 import IndexGroupList from './components/index-group-list/index.vue';
 import IndexNewList from './components/index-new-list/index.vue';
-import systemInfo  from '@/common/js/systemInfo.js'
+import systemInfo from '@/common/js/systemInfo.js';
 export default {
 	mixins: [MescrollMixin],
 	components: {
@@ -87,10 +84,10 @@ export default {
 	},
 	onLoad() {},
 	onReady() {
-		systemInfo().then(res=>{
+		systemInfo().then(res => {
 			console.log(res.statusBar);
-			this.statusBar = res.statusBar + 'px'
-		})
+			this.statusBar = res.statusBar + 'px';
+		});
 	},
 	methods: {
 		async getData() {
@@ -103,6 +100,9 @@ export default {
 		async downCallback() {
 			await this.getData();
 			this.mescroll.endSuccess();
+		},
+		toPageSearch(){
+			this.navTo('/pages/search/search')
 		}
 	}
 };

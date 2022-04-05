@@ -33,10 +33,8 @@
 
 <script>
 	import MescrollCompMixin from '@/uni_modules/mescroll-uni/components/mescroll-uni/mixins/mescroll-comp.js';
-	import LearnList from './components/learn-list.vue'
 	export default {
 		mixins:[MescrollCompMixin],
-		components: {LearnList},
 		data() {
 			return {
 				menus: [

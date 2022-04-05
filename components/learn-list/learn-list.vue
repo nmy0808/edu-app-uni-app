@@ -21,9 +21,14 @@
 <script>
 import MescrollMixin from '@/uni_modules/mescroll-uni/components/mescroll-uni/mescroll-mixins.js';
 export default {
+	name:	'learn-list',
 	mixins: [MescrollMixin],
 	props: {
 		type: {
+			type: String,
+			default: ''
+		},
+		keyWord:{
 			type: String,
 			default: ''
 		}
@@ -32,15 +37,23 @@ export default {
 		return {
 			downOption: {},
 			upOption: {},
+			fetchApi: { learn:  this.$http.getLearnHistoryListApi, search:  this.$http.searchApi },
 			list: []
 		};
+	},
+	watch: {
+		keyWord(){
+			this.mescroll.resetUpScroll()
+		}
 	},
 	methods: {
 		async upCallback({ num, size }) {
 			const params = {};
 			params.page = num;
 			params.type = this.type;
-			const { data } = await this.$http.getLearnHistoryListApi(params);
+			params.keyWord = this.keyWord || '';
+			const fetchApi = this.keyWord?this.fetchApi['search']:this.fetchApi['learn']
+			const { data } = await fetchApi(params);
 			num === 1
 				? (this.list = data.rows)
 				: (this.list = this.list.concat(data.rows));
