@@ -30,7 +30,6 @@ export default {
 		clearAll(state){
 			state.token = ''
 			state.userInfo = ''
-			console.log(123123);
 			this.commit('user/asyncStorage')
 		}
 	},

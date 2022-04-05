@@ -19,9 +19,11 @@
 			</view>
 		</view>
 		<view class="audio-control">
-			<text type="iconfont" class="audio-loop" @click="loop">循环</text>
-			<view class="play-btn " @click="switchPlay">play</view>
-			<uni-icons type="star" class="audio-fav">收藏</uni-icons>
+			<text class="iconfont icon-ziyuan11 audio-loop icon-btn" :class="{active:isLoop}" @click="loop"></text>
+			<view class="play-box">
+				<text class="play-btn iconfont mx-3 " :class="{ 'icon-tianchongxing-' : isPlay, 'icon-bofang2': !isPlay }"  @click="switchPlay"></text>
+			</view>
+			<text class="iconfont icon-shoucang1 audio-fav icon-btn" :class="{active: isfava}"></text>
 		</view>
 	</view>
 </template>
@@ -31,11 +33,13 @@ import tool from '@/common/js/tool.js';
 export default {
 	name: 'audio-play',
 	props: {
-		data: {
-			type: Object,
-			default: () => {
-				return {};
-			}
+		url: {
+			type: String,
+			default: ''
+		},
+		isfava: {
+			type: Boolean,
+			default: false
 		}
 	},
 	filters: {
@@ -55,8 +59,7 @@ export default {
 	},
 	mounted() {
 		this.innerAudioContext = uni.createInnerAudioContext();
-		this.innerAudioContext.src =
-			'https://bjetxgzv.cdn.bspapp.com/VKCEYUGU-hello-uniapp/2cc220e0-c27a-11ea-9dfb-6da8e309e0d8.mp3';
+		this.innerAudioContext.src = this.url;
 		this.innerAudioContext.onPlay(() => {
 			console.log('开始播放');
 		});
@@ -134,17 +137,30 @@ export default {
 	align-items: center;
 	.play-loop {
 	}
-	.play-btn {
+	.play-box{
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		width: 120rpx;
 		height: 120rpx;
-		background-color: $uni-color-primary;
-		border-radius: 50%;
 		margin: 0 40rpx;
+		.play-btn {
+			font-size: 90rpx;
+			color: $uni-color-primary;
+			&.icon-tianchongxing-{
+				font-size: 99rpx;
+			}
+		}
 	}
+
 	.play-fav {
+	}
+	.icon-btn{
+		color: #bbbbbb;
+		font-size: 40rpx;
+	}
+	.icon-btn.active{
+		color: $uni-color-primary;
 	}
 }
 </style>

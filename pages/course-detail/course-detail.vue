@@ -9,7 +9,7 @@
 		></video>
 		<template v-if="type==='audio'">
 			<image :src="detailData.cover" mode=""  class="course-detail-cover"></image>
-			<audio-play></audio-play>
+			<audio-play :url='detailData.content' :isfava='detailData.isfava'></audio-play>
 		</template>
 		<view class="course-detail-header app-container">
 			<view class="course-detail-title text-ellipsis">
