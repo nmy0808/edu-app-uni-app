@@ -1,5 +1,5 @@
 // import store from '@/store'
-export default  () => {
+export default () => {
 	return new Promise((resolve, reject) => {
 		uni.getSystemInfo({
 			success: e => {
@@ -19,14 +19,12 @@ export default  () => {
 					// 1.导航栏 (安卓固定50px)
 					navigator = 50
 					// 2.导航栏 + 状态栏
-					customBar = statusBar +
-					50;
+					customBar = statusBar + 50;
 				} else {
 					// 1.导航栏 (ios固定45px)
 					navigator = 45
 					// 2.导航栏 + 状态栏
-					customBar = statusBar +
-					45;
+					customBar = statusBar + 45;
 				}
 				// #endif
 
@@ -55,7 +53,7 @@ export default  () => {
 				const info = {
 					info: e, //  systemInfo  对象
 					platform: e
-					.platform, // 当前平台
+						.platform, // 当前平台
 					areaTop, //   安全区
 					areaBottom,
 					statusBar, // 状态栏 ( 和安全区一样的, 叫法不同 )

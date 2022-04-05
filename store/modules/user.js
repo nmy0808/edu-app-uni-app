@@ -51,9 +51,9 @@ export default {
 			* 退出登录
 			*/
 		async logout(ctx){
-			await $http.logoutApi();
 			ctx.commit('clearAll')
 			uni.$emit('login')
+			await $http.logoutApi();
 		},
 		/**
 		 * 修改个人资料

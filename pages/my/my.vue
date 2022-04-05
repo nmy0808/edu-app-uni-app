@@ -35,7 +35,7 @@
       </view>
     </template>
     <!-- 订单菜单 -->
-    <view class="my-icon-menu shadow">
+    <view class="my-icon-menu shadow" :style="{ transform: `translateY(${customBar})` }">
       <template v-for="(item, index) in iconMenu">
         <view class="menu-item" :key="index" @click="item.handle">
           <uni-icons
@@ -75,6 +75,7 @@
 
 <script>
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
+import systemInfo  from '@/common/js/systemInfo.js'
 export default {
   data() {
     return {
@@ -86,9 +87,14 @@ export default {
         { icon: "star", text: "收藏", handle: () => {} },
         { icon: "map", text: "在学", handle: () => {} },
       ],
+			customBar: 0
     };
   },
-  created() {},
+  mounted() {
+		systemInfo().then(res=>{
+			this.customBar = res.navigator + 'px'
+		})
+	},
   computed: {
     ...mapState("user", ["userInfo"]),
   },

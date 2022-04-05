@@ -6,25 +6,28 @@
 					<view class="login-btn" @click="toPageLogin">立即登录</view>
 				</view>
 		</no-login>
-		<view v-else class="learn-menus shadow">
-			<view class="learn-menus-item " v-for="(item,index) in menus" :key='index'>
-				<uni-icons class="learn-menus-item-icon" :type="item.icon" size="26" color="#f5cb64"></uni-icons>
-				<view class="learn-menus-item-label">
-					{{item.name}}
+		<template v-else>
+			<view class="learn-menus shadow">
+				<view class="learn-menus-item " v-for="(item,index) in menus" :key='index'>
+					<uni-icons class="learn-menus-item-icon" :type="item.icon" size="26" color="#f5cb64"></uni-icons>
+					<view class="learn-menus-item-label">
+						{{item.name}}
+					</view>
 				</view>
 			</view>
-		</view>
-		<view class="learn-main">
-			<tabs :data="tabs" v-model="tabIndex"></tabs>
-			<swiper class="learn-swiper-box" :duration="200" :current="tabIndex" @change="handleSwiperChange">
-				<swiper-item >
-						<learn-list ref='mescrollItem_0' type="course"></learn-list>
-				</swiper-item>
-				<swiper-item>
-					<learn-list ref="mescrollItem_1" type="column"></learn-list>
-				</swiper-item>
-			</swiper>
-		</view>
+			<view class="learn-main">
+				<tabs :data="tabs" v-model="tabIndex"></tabs>
+				<swiper class="learn-swiper-box" :duration="200" :current="tabIndex" @change="handleSwiperChange">
+					<swiper-item >
+							<learn-list ref='mescrollItem_0' type="course"></learn-list>
+					</swiper-item>
+					<swiper-item>
+						<learn-list ref="mescrollItem_1" type="column"></learn-list>
+					</swiper-item>
+				</swiper>
+			</view>
+		</template>
+		
 	</view>
 </template>
 
