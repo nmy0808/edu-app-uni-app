@@ -124,7 +124,6 @@ export default {
 		 */
 		isLoaded() {
 			return JSON.stringify(this.detailData) !== '{}';
-			return false;
 		},
 		// 当前课程是否已经购买或者免费
 		isbuy() {
@@ -138,15 +137,16 @@ export default {
 	},
 	methods: {
 		async getData() {
-			const params = {};
-			params.id = this.id;
-			const { data } = await this.$http.getCourseDetailApi(params);
-			uni.setNavigationBarTitle({
-				title: data.title
-			});
-			this.detailData = data;
-			this.type = data.type;
-			console.log(data);
+			
+				const params = {};
+				params.id = this.id;
+				const { data } = await this.$http.getCourseDetailApi(params);
+				uni.setNavigationBarTitle({
+					title: data.title
+				});
+				this.detailData = data;
+				this.type = data.type;
+				console.log(data);
 		},
 		/**
 		 * 收藏

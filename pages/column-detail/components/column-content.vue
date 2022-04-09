@@ -53,6 +53,10 @@ export default {
 		async handleItemClick(item) {
 			let url = '/pages/course-detail/course-detail';
 			url += `?id=${item.id}`;
+			console.log(item);
+			if(parseFloat(item.price) !== 0 && !this.isbuy){
+				return this.toast('请先购买该专栏')
+			}
 			// 跳转
 			this.navTo(url);
 			// 更新学习进度

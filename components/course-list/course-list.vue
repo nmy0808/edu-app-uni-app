@@ -54,7 +54,7 @@ export default {
 		// 跳转至对应类型的详情页
 		toPageDetail(item) {
 			// 详情页只有两种类型 'column'/'course'
-			if (item.type === 'column') {
+			if (item.type === 'column' || !item.type) {
 				uni.navigateTo({
 					url: this.module
 						? `/pages/column-detail/column-detail?id=${item.id}&module=${
