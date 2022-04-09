@@ -137,9 +137,9 @@ export default {
         // 判断 是否绑定手机号
         setTimeout(() => {
           if (phone) {
-            uni.switchTab({
-              url: "/pages/index/index",
-            });
+           uni.navigateBack({
+           	delta: 1
+           })
           } else {
             this.navTo("/pages/bind-phone/bind-phone");
           }

@@ -26,7 +26,7 @@ import typeMap from '@/typeMap';
 export default {
 	props: {
 		columnId:{
-			type: Number,
+			type: String,
 			default: null
 		},
 		data: {

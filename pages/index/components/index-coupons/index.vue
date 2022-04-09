@@ -35,7 +35,6 @@ export default {
 				it.typeKey = typeMap[it.type]
 			})
 			this.list = data
-			console.log(data);
 		}
 	}
 };

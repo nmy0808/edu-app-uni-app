@@ -2,7 +2,7 @@
 <template>
 	<view class="indexgrouplist-container">
 		<index-title title="拼团" move="查看更多" isMove></index-title>
-		<course-list :data="list"></course-list>
+		<course-list :data="list" module='group'></course-list>
 	</view>
 </template>
 
@@ -43,6 +43,7 @@ export default {
 			params.page = this.page;
 			const { data } = await fetchApi(params);
 			this.list = data.rows
+			console.log( data.rows);
 		}
 	}
 };

@@ -7,13 +7,18 @@
 				v-for="(item, index) in data"
 				:key="index"
 				:isRow="true"
-				:data='item'
+				:data="item"
+				@click.native="toPageDetail(item)"
 			></course-item>
 		</template>
 		<!-- 并列样式 -->
 		<scroll-view v-else scroll-x class="course-list noScorll">
 			<template v-for="(item, index) in data">
-				<course-item :key="index" :data='item'></course-item>
+				<course-item
+					:key="index"
+					:data="item"
+					@click.native="toPageDetail(item)"
+				></course-item>
 			</template>
 		</scroll-view>
 	</view>
@@ -39,9 +44,34 @@ export default {
 			default: () => {
 				return [];
 			}
+		},
+		module: {
+			type: String,
+			default: ''
 		}
 	},
-	methods: {}
+	methods: {
+		// 跳转至对应类型的详情页
+		toPageDetail(item) {
+			// 详情页只有两种类型 'column'/'course'
+			if (item.type === 'column') {
+				uni.navigateTo({
+					url: this.module
+						? `/pages/column-detail/column-detail?id=${item.id}&module=${
+								this.module
+						  }`
+						: `/pages/column-detail/column-detail?id=${item.id}`
+				});
+			} else {
+				uni.navigateTo({
+					url: this.module ? `/pages/course-detail/course-detail?id=${
+						item.id
+					}&module=${this.module}`:
+					`/pages/course-detail/course-detail?id=${item.id}`
+				});
+			}
+		}
+	}
 };
 </script>
 

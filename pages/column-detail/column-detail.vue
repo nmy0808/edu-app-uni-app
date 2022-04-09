@@ -24,37 +24,44 @@
 				<view class="course-detail-content app-container">
 					<view class="detail-title">专栏简介</view>
 					<!-- 不需要引入，可直接使用 -->
-					<mp-html
-						:content="detailData.content"
-						:key="id"
-					/>
+					<mp-html :content="detailData.content" :key="id" />
 				</view>
 			</view>
 		</template>
 		<template v-else>
-			<course-content :columnId='id' :data='detailData.column_courses'></course-content>
+			<course-content
+				:columnId="id"
+				:data="detailData.column_courses"
+			></course-content>
 		</template>
 		<view class="course-detail-buy">
-			<button class="course-buy-btn">立即订购 ¥{{ detailData.price }}</button>
+			<button v-if="!isbuy" class="course-buy-btn" @click="onSubmit">
+				立即订购 ¥{{ detailData.price }}
+			</button>
+			<!-- <button v-else class="course-buy-btn" @click="onLearn">
+				立即学习
+			</button> -->
 		</view>
 	</view>
 </template>
 
 <script>
-	import CourseContent from './components/column-content.vue'
+import CourseContent from './components/column-content.vue';
 export default {
-	components: {CourseContent},
+	components: { CourseContent },
 	data() {
 		return {
 			id: null,
 			detailData: {},
 			type: null,
+			module: null,
 			tabIndex: 0,
 			tabs: [{ name: '简介', index: 0 }, { name: '目录', index: 1 }]
 		};
 	},
 	onLoad(e) {
 		this.id = e.id;
+		this.module = e.module
 		this.getData();
 	},
 	mounted() {
@@ -62,16 +69,27 @@ export default {
 			.createSelectorQuery()
 			.in(this)
 			.select('#swiper_content_1')
-				.fields(
-					{
-						size: true
-					},
-					({ height }) => {
-						console.log(height);
-						// 获取该元素距离上边的距离
-					}
-				)
-				.exec();
+			.fields(
+				{
+					size: true
+				},
+				({ height }) => {
+					console.log(height);
+					// 获取该元素距离上边的距离
+				}
+			)
+			.exec();
+	},
+	computed: {
+		// 当前课程是否已经购买或者免费
+		isbuy(){
+			if(JSON.stringify(this.detailData) === '{}') return
+			if(this.detailData.isbuy || parseFloat(this.detailData.price) === 0 ){
+				return true
+			}else{
+				return false
+			}
+		}
 	},
 	methods: {
 		async getData() {
@@ -83,7 +101,6 @@ export default {
 			});
 			this.detailData = data;
 			this.type = data.type;
-			console.log(this.detailData);
 		},
 		/**
 		 * 收藏
@@ -115,6 +132,24 @@ export default {
 			await this.$http.setCollectApi(params);
 			this.toast(value ? '已收藏' : '取消收藏');
 			this.detailData.isfava = value;
+		},
+		/**
+		 * 立即学习
+		 */
+		onLearn(){
+			console.log(22);
+		},
+		// 立即订购
+		async onSubmit(){
+			const flag = await this.$tool.isLogin({isLogin:true})
+			if(flag){
+				// 跳转到订单详情页
+				const type = this.module ? this.module : 'column'
+				const id = this.detailData.id
+				uni.navigateTo({
+					url: `/pages/order-detail/order-detail?type=${type}&id=${id}`
+				})
+			}
 		}
 	}
 };

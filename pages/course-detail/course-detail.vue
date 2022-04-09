@@ -1,26 +1,40 @@
 <template>
-	<view class="course-detail-page">
-		<video
-			v-if="type === 'video'"
-			:src="detailData.content"
-			class="w-100"
-			controls
-			:poster="detailData.cover"
-			@timeupdate="handleVideoProgress"
-		></video>
-		<template v-if="type === 'audio'">
-			<image
-				:src="detailData.cover"
-				mode=""
-				class="course-detail-cover"
-			></image>
-			<audio-play
-				:url="detailData.content"
-				:isfava="detailData.isfava"
-				@collect="handleCollect"
-				@progress='handleVideoProgress'
-			></audio-play>
-		</template>
+	<view
+		v-if="isLoaded"
+		class="course-detail-page animate__animated animate__fadeIn animate__faster"
+	>
+		<!-- 如果没有购买显示封面 -->
+		<image
+			v-if="!isbuy"
+			:src="detailData.cover"
+			mode=""
+			class="course-detail-cover"
+		></image>
+		<!-- 如果购买了, 显示对应课程类型的详情 -->
+		<view v-if="isbuy">
+			<video
+				v-if="type === 'video'"
+				:src="detailData.content"
+				class="w-100"
+				controls
+				:poster="detailData.cover"
+				@timeupdate="handleVideoProgress"
+			></video>
+			<template v-if="type === 'audio'">
+				<image
+					:src="detailData.cover"
+					mode=""
+					class="course-detail-cover"
+				></image>
+				<audio-play
+					:url="detailData.content"
+					:isfava="detailData.isfava"
+					@collect="handleCollect"
+					@progress="handleVideoProgress"
+				></audio-play>
+			</template>
+		</view>
+		<!--  -->
 		<view class="course-detail-header app-container">
 			<view class="course-detail-title text-ellipsis">
 				{{ detailData.title }}
@@ -41,10 +55,17 @@
 		<view class="course-detail-content app-container">
 			<view class="detail-title">课程简介</view>
 			<!-- 不需要引入，可直接使用 -->
-			<mp-html :content="detailData.try" :key="id" />
+			<mp-html
+				v-if="isbuy && type === 'media'"
+				:content="detailData.content"
+				:key="id"
+			/>
+			<mp-html v-else :content="detailData.try" :key="id" />
 		</view>
 		<view class="course-detail-buy">
-			<button class="course-buy-btn">立即订购 ¥{{ detailData.price }}</button>
+			<button class="course-buy-btn" v-if="!isbuy" @click="onSubmit">
+				立即订购 ¥{{ detailData.price }}
+			</button>
 		</view>
 	</view>
 </template>
@@ -56,6 +77,7 @@ export default {
 			id: null,
 			detailData: {},
 			type: null,
+			module: null,
 			fetchApi: {
 				course: this.$http.getCourseDetailApi,
 				column: this.$http.getColumnDetailApi
@@ -64,7 +86,7 @@ export default {
 		};
 	},
 	onPageScroll({ scrollTop }) {
-		if(this.type !== 'media') return
+		if (this.type !== 'media') return;
 		uni
 			.createSelectorQuery()
 			.in(this)
@@ -88,12 +110,31 @@ export default {
 	},
 	onLoad(e) {
 		this.id = e.id;
+		this.module = e.module;
 		this.getData();
 	},
 	destroyed() {
 		const params = this.progressParams;
 		if (!params.progress || params.type === '') return;
 		this.$http.updateLearnHistoryApi(params);
+	},
+	computed: {
+		/**
+		 * 判断当前是否加载完数据
+		 */
+		isLoaded() {
+			return JSON.stringify(this.detailData) !== '{}';
+			return false;
+		},
+		// 当前课程是否已经购买或者免费
+		isbuy() {
+			if (JSON.stringify(this.detailData) === '{}') return;
+			if (this.detailData.isbuy || parseFloat(this.detailData.price) === 0) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 	},
 	methods: {
 		async getData() {
@@ -105,7 +146,7 @@ export default {
 			});
 			this.detailData = data;
 			this.type = data.type;
-			console.log(this.type);
+			console.log(data);
 		},
 		/**
 		 * 收藏
@@ -131,6 +172,26 @@ export default {
 			this.progressParams = params;
 			clearTimeout(this.timer);
 			this.timer = null;
+		},
+		// 立即订购
+		async onSubmit() {
+			const flag = await this.$tool.isLogin({ isLogin: true });
+			if (flag) {
+				const typeMap = {
+					media: 'course',
+					video: 'course',
+					audio: 'course',
+					column: 'column',
+					book: 'book',
+					flashsale: 'flashsale'
+				};
+				// 跳转到订单详情页
+				const type = this.module ? this.module : typeMap[this.detailData.type];
+				const id = this.detailData.id;
+				uni.navigateTo({
+					url: `/pages/order-detail/order-detail?type=${type}&id=${id}`
+				});
+			}
 		}
 	}
 };

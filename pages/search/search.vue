@@ -1,7 +1,7 @@
 <template>
 	<view class="search-page">
 		<view class="flex align-center app-container">
-			<uni-icons type="back" @click="navBack" size="20"></uni-icons>
+			<uni-icons type="back" @click="toPageIndex" size="20"></uni-icons>
 			<uni-search-bar
 				class="flex-1"
 				radius="5"
@@ -117,6 +117,11 @@ export default {
 		cancel() {
 			this.keyWord = '';
 			this.showList = false;
+		},
+		toPageIndex(){
+			uni.switchTab({
+				url: '/pages/index/index'
+			})
 		},
 		/**
 		 * 点击历史记录标签

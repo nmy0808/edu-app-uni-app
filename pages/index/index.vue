@@ -85,7 +85,6 @@ export default {
 	onLoad() {},
 	onReady() {
 		systemInfo().then(res => {
-			console.log(res.statusBar);
 			this.statusBar = res.statusBar + 'px';
 		});
 	},
