@@ -2,8 +2,14 @@
 <template>
 	<view class="indexgrouplist-container">
 		<index-title title="拼团" move="查看更多" isMove></index-title>
-		<course-list :data="list" module='group'></course-list>
+		<course-list  v-if="list.length" :data="list" module='group'></course-list>
+		<!-- 骨架屏 -->
+		<view class="group-skeleton flex animate__animated animate__fadeIn" v-else>
+			<view class="skeleton-item group-skeleton-item" v-for="(item,index) in 2" :key='index'>
+			</view>
+		</view>
 	</view>
+
 </template>
 
 <script>
@@ -60,5 +66,15 @@ export default {
 		width: 750rpx;
 		white-space: nowrap;
 	}
+	.group-skeleton{
+		width: 100%;
+		height: 328rpx;
+	}
+	.group-skeleton-item{
+		width: 340rpx;
+		height: 268rpx;
+		margin: 0 20rpx;
+	}
+
 }
 </style>

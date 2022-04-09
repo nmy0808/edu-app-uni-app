@@ -1,11 +1,15 @@
 <!-- 首页-优惠券 -->
 <template>
 	<view class="indexcoupons-container">
-		<scroll-view :scroll-x="true" class="scroll-view noScorll">
+		<scroll-view :scroll-x="true" class="scroll-view noScorll" v-if="list.length">
 			<template v-for="(item, index) in list">
 				<coupons-item :key="index" :data='item'></coupons-item>
 			</template>
 		</scroll-view>
+		<view class="coupons-skeleton flex animate__animated animate__fadeIn" v-else>
+			<view class="skeleton-item coupons-skeleton-item" v-for="(item,index) in 2" :key='index'>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -46,6 +50,15 @@ export default {
 		width: 750rpx;
 		white-space: nowrap;
 		margin-top: $uni-spacing-container;
+	}
+	.coupons-skeleton{
+		width: 100%;
+		height: 328rpx;
+	}
+	.coupons-skeleton-item{
+		width: 340rpx;
+		height: 120rpx;
+		margin: 0 20rpx;
 	}
 }
 </style>

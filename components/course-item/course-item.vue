@@ -2,7 +2,7 @@
 	<view class="course-item-container" :class="[isRow ? 'is-row' : '']">
 		<view class="course-item-cover">
 			<image class="course-image" :src="data.cover" mode=""></image>
-			<view class="course-item-tag">{{ typeMap[data.type] }}</view>
+			<view class="course-item-tag">{{ typeMap[data.type] || '专栏' }}</view>
 		</view>
 		<view class="course-item-desc">
 			<view class="course-item-desc-title text-ellipsis">{{ data.title }}</view>
