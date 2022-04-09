@@ -49,7 +49,7 @@ export default {
 			params.page = this.page;
 			const { data } = await fetchApi(params);
 			this.list = data.rows
-			console.log( data.rows);
+			console.log( data.rows, "///");
 		}
 	}
 };

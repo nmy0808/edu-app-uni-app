@@ -26,7 +26,7 @@
 		},
 		methods:{
 			async upCallback( {num}){
-				const {data} = await this.$http.getCourseListApi()
+				const {data} = await this.$http.getCourseListApi(num)
 				num === 1 ? this.list = data.rows : this.list = this.list.concat(data.rows)
 				this.mescroll.endBySize(this.list.length , data.count)
 			}

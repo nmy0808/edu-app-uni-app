@@ -53,23 +53,29 @@ export default {
 	methods: {
 		// 跳转至对应类型的详情页
 		toPageDetail(item) {
-			// 详情页只有两种类型 'column'/'course'
-			if (item.type === 'column' || !item.type) {
-				uni.navigateTo({
-					url: this.module
-						? `/pages/column-detail/column-detail?id=${item.id}&module=${
-								this.module
-						  }`
-						: `/pages/column-detail/column-detail?id=${item.id}`
-				});
-			} else {
-				uni.navigateTo({
-					url: this.module ? `/pages/course-detail/course-detail?id=${
-						item.id
-					}&module=${this.module}`:
-					`/pages/course-detail/course-detail?id=${item.id}`
-				});
+	
+			let type = ''
+			if(item.type === 'column' || !item.type){
+				 type ='column'
+			}else{
+				 type ='course'
 			}
+			let url = `/pages/${type}-detail/${type}-detail?id=${item.id}`
+			
+			// 当前是否是活动模块类型
+			if(this.module === 'group'){
+				//如果是拼团类型, 传入参数 model和拼团id
+				url += `&module=${this.module}&group_id=${item.group_id}`
+			}
+			// 当前是否是活动秒杀类型
+			if(this.module === 'flashsale'){
+				//如果是拼团类型, 传入参数 model和秒杀id
+				url += `&module=${this.module}&flashsale_id=${item.flashsale_id}`
+			}
+			
+			// 跳转
+			// 详情页只有两种类型 'column'/'course'
+			uni.navigateTo({ url });
 		}
 	}
 };
