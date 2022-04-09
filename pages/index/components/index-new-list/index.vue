@@ -1,7 +1,7 @@
 <!-- 首页-标题组件 -->
 <template>
 	<view class="indexgrouplist-container">
-		<index-title title="最新列表" move="查看更多" isMove></index-title>
+		<index-title title="最新列表" move="查看更多" isMove @click.native='toPageList'></index-title>
 		<course-list :isRow="true" :data="data"></course-list>
 	</view>
 </template>
@@ -30,6 +30,11 @@ export default {
 	methods: {
 		handleClick(e) {
 			this.$emit('move', e);
+		},
+		toPageList(){
+			uni.navigateTo({
+				url: '/pages/list/list?type=course'
+			})
 		}
 	}
 };

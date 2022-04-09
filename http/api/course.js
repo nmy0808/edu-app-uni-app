@@ -12,3 +12,12 @@ export const getCourseDetailApi= (data) => {
 	const options = {}
 	return request.get(url, data, options)
 }
+/**
+ * 课程列表
+ */
+export const getCourseListApi= (page) => {
+	const url = '/mobile/course/list'
+	const data = { page }
+	const options = { page }
+	return request.get(url, data, options)
+}

@@ -53,12 +53,15 @@ export default {
 	}
 	.coupons-skeleton{
 		width: 100%;
-		height: 328rpx;
+		height: 120rpx;
 	}
 	.coupons-skeleton-item{
 		width: 340rpx;
 		height: 120rpx;
 		margin: 0 20rpx;
+	}
+	.skeleton-item{
+		background-color: $uni-color-paragraph;
 	}
 }
 </style>

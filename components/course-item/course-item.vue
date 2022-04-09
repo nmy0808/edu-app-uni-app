@@ -64,6 +64,7 @@ export default {
 		.course-image {
 			width: 100%;
 			height: 100%;
+			background-color: $uni-img-default-color;
 		}
 		.course-item-tag {
 			position: absolute;

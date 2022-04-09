@@ -94,9 +94,7 @@
 	color: #FFFFFF;
 	border-radius: 10rpx;
 }
-	.skeleton-item{
-		background-color: $uni-img-default-color;
-	}
+
 
 /* 隐藏滚动条的问题,但依旧具备可以滚动的功能 */
 /* 解决小程序和app  */

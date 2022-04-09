@@ -68,13 +68,15 @@ export default {
 	}
 	.group-skeleton{
 		width: 100%;
-		height: 328rpx;
+		height: 358rpx;
 	}
 	.group-skeleton-item{
 		width: 340rpx;
 		height: 268rpx;
 		margin: 0 20rpx;
 	}
-
+	.skeleton-item{
+		background-color: $uni-color-paragraph;
+	}
 }
 </style>
