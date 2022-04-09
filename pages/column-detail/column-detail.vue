@@ -1,6 +1,21 @@
 <template>
 	<view class="course-detail-page">
 		<image :src="detailData.cover" mode="" class="course-detail-cover"></image>
+		<!-- 如果是活动模块, 显示倒计时 -->
+		<view class="module-box app-container" v-if="module && !isbuy">
+			 <!-- 如果是拼团 -->
+			 <template v-if="module ==='group' && isLoaded">
+				 <countdown
+					:startTime="detailData.group.start_time"
+					:endTime="detailData.group.end_time"
+					:pnum='detailData.group.p_num'
+					:price='detailData.group.price'
+					:oprice='detailData.price'
+					:module="module"
+				 ></countdown>
+			 </template>
+		</view>
+		<!--  -->
 		<tabs v-model="tabIndex" :data="tabs"></tabs>
 		<template v-if="tabIndex === 0">
 			<view id="swiper_content_1">
@@ -55,13 +70,18 @@ export default {
 			detailData: {},
 			type: null,
 			module: null,
+			group_id:'',
+			flashsale_id:'',
 			tabIndex: 0,
 			tabs: [{ name: '简介', index: 0 }, { name: '目录', index: 1 }]
 		};
 	},
 	onLoad(e) {
 		this.id = e.id;
+		this.column_id = e.column_id;
 		this.module = e.module
+		this.group_id = e.group_id
+		this.flashsale_id = e.flashsale_id
 		this.getData();
 	},
 	mounted() {
@@ -81,6 +101,12 @@ export default {
 			.exec();
 	},
 	computed: {
+		/**
+		 * 判断当前是否加载完数据
+		 */
+		isLoaded() {
+			return JSON.stringify(this.detailData) !== '{}';
+		},
 		// 当前课程是否已经购买或者免费
 		isbuy(){
 			if(JSON.stringify(this.detailData) === '{}') return
@@ -89,18 +115,29 @@ export default {
 			}else{
 				return false
 			}
-		}
+		},
 	},
 	methods: {
 		async getData() {
 			const params = {};
 			params.id = this.id;
-			const { data } = await this.$http.getColumnDetailApi(params);
+			params.group_id = this.group_id;
+			params.flashsale_id = this.flashsale_id;
+			params.type = 'column'
+			const fetchApiMap = {
+				activity: this.$http.getGroupDetailApi,
+				normal: this.$http.getCourseDetailApi
+			};
+			const fetchApi = this.module
+				? fetchApiMap['activity']
+				: fetchApiMap['normal'];
+			const { data } = await fetchApi(params);
 			uni.setNavigationBarTitle({
 				title: data.title
 			});
 			this.detailData = data;
 			this.type = data.type;
+			console.log(data);
 		},
 		/**
 		 * 收藏

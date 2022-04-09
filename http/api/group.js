@@ -24,8 +24,11 @@ export const getFlashsaleListApi= ({page, usable = 1}) => {
  * 拼团详情
  * 专栏ID 拼团ID 秒杀ID
  */
-export const getGroupDetailApi= ({ id,column_id,group_id, flashsale_id }) => {
-	const url = '/mobile/course/read'
+export const getGroupDetailApi= ({ id,type='course',column_id,group_id, flashsale_id }) => {
+	let url = '/mobile/course/read'
+	if(type==='column'){
+		url = '/mobile/column/read'
+	}
 	const data = { id }
 	if(column_id){data.column_id = column_id}
 	if(group_id){data.group_id = group_id}

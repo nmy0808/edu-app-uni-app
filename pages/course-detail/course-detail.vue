@@ -12,31 +12,17 @@
 		></image>
 		<!-- 如果是活动模块, 显示倒计时 -->
 		<view class="module-box app-container" v-if="module && !isbuy">
-			<template v-if="module ==='group'">
-				<view class="module-group-left">
-					<view class="">
-						<text class="price">
-							¥{{detailData.group.price}}
-						</text>
-						<text class="oprice">
-							¥{{detailData.price}}
-						</text>
-					</view>
-					<view class="group-num">
-						{{detailData.group.p_num}}人拼团
-					</view>
-				</view>
-			</template>
-			<uni-countdown
-			class="uni-countdown-box"
-				color="#FFFFFF"
-				background-color="#cf2e40"
-				border-color="#00B26A"
-				:day="activityDate.day"
-				:hour="activityDate.hour"
-				:minute="activityDate.minute"
-				:second="activityDate.second"
-			></uni-countdown>
+			 <!-- 如果是拼团 -->
+			 <template v-if="module ==='group'">
+				 <countdown
+					:startTime="detailData.group.start_time"
+					:endTime="detailData.group.end_time"
+					:pnum='detailData.group.p_num'
+					:price='detailData.group.price'
+					:oprice='detailData.price'
+					:module="module"
+				 ></countdown>
+			 </template>
 		</view>
 		<!-- 如果购买了, 显示对应课程类型的详情 -->
 		<view v-if="isbuy">
@@ -165,36 +151,7 @@ export default {
 				return false;
 			}
 		},
-		// 倒计时
-		activityDate(){
-			if(!this.isLoaded)return
-			console.log(1111);
-			const module = this.module
-			if(!module) return 
-			const now_time = new Date()
-			// 起始时间
-			let start_time = ''
-			// 结束时间
-			let end_time = ''
-			// 判断当前模块是拼团还是倒计时
-			if(module === 'group'){
-				start_time = new Date(this.detailData.group.start_time)
-				end_time = new Date(this.detailData.group.end_time)
-			}
-			// TODO 获取倒计时的起始时间/结束时间
-			
-			// 判断当前活动是否超时/未开始
-			if((now_time - start_time) <0 ){
-				this.activity = '活动未开始'
-				return
-			}
-			if((end_time - now_time) < 0 ){
-				this.activity = '活动已经结束'
-				return
-			}
-			// 计算倒计时时间
-			return this.$tool.dateCount(end_time) || {}
-		},
+		
 	},
 	methods: {
 		async getData() {
@@ -312,34 +269,34 @@ export default {
 		background-color: $uni-color-primary;
 		color: white;
 	}
-	.module-box{
-		display: flex;
-		box-sizing: border-box;
-		.module-group-left{
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			.price{
-				color: $uni-color-error;
-				font-size: 22px;
-				font-weight: bold;
-				margin-right: 20rpx;
-			}
-			.oprice{
-				text-decoration: line-through;
-				color: $uni-color-light;
-				font-size: 14px;
-			}
-			.group-num{
-				font-size: 14px;
-				margin-right: auto;
-				margin-top: 10rpx;
-				color: $uni-color-error;
-			}
-		}
-		.uni-countdown-box{
-			margin-left: auto;
-		}
-	}
+	// .module-box{
+	// 	display: flex;
+	// 	box-sizing: border-box;
+	// 	.module-group-left{
+	// 		display: flex;
+	// 		flex-direction: column;
+	// 		align-items: center;
+	// 		.price{
+	// 			color: $uni-color-error;
+	// 			font-size: 22px;
+	// 			font-weight: bold;
+	// 			margin-right: 20rpx;
+	// 		}
+	// 		.oprice{
+	// 			text-decoration: line-through;
+	// 			color: $uni-color-light;
+	// 			font-size: 14px;
+	// 		}
+	// 		.group-num{
+	// 			font-size: 14px;
+	// 			margin-right: auto;
+	// 			margin-top: 10rpx;
+	// 			color: $uni-color-error;
+	// 		}
+	// 	}
+	// 	.uni-countdown-box{
+	// 		margin-left: auto;
+	// 	}
+	// }
 }
 </style>
