@@ -97,9 +97,6 @@ try {
   components = {
     livePlay: function() {
       return __webpack_require__.e(/*! import() | components/live-play/live-play */ "components/live-play/live-play").then(__webpack_require__.bind(null, /*! @/components/live-play/live-play.vue */ 405))
-    },
-    uniEasyinput: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput */ "uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue */ 304))
     }
   }
 } catch (e) {
@@ -174,6 +171,23 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 
 
@@ -204,17 +218,27 @@ var _default =
     // 		this.$refs.playRef.init(params);
     // }));
     Promise.all([this.getData(), this.getDanmu()]).then(function (_) {
-      if (_this.detailData.isbuy) {
+      if (_this.isShowPlayer) {
+        console.log(_this.detailData);
         var params = {};
         // 准备播放url和弹幕列表
         params.playUrl = _this.detailData.playUrl;
         params.danmuList = _this.danmuList;
         // 初始化播放器组件
-        console.log('????');
         _this.$refs.playRef.init(params);
       }
     });
   },
+  computed: {
+    // 判断直播结束
+    isOver: function isOver() {
+      return new Date(this.detailData.end_time) - new Date() < 0;
+    },
+    // 是否显示播放器
+    isShowPlayer: function isShowPlayer() {
+      return this.detailData.isbuy || parseFloat(this.detailData.price) === 0;
+    } },
+
   methods: {
     getData: function getData() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var params, _yield$_this2$$http$g, data;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
                 params = {};
@@ -238,7 +262,12 @@ var _default =
                 _context3.next = 7;return _this4.$http.sendDanmuApi(params);case 7:_yield$_this4$$http$s = _context3.sent;data = _yield$_this4$$http$s.data;
                 // 播放器发送弹幕
                 try {
-                  _this4.$refs.playRef.sendDanmu({ text: data.content, id: data.id, color: data.color, time: data.time });
+                  _this4.$refs.playRef.sendDanmu({
+                    text: data.content,
+                    id: data.id,
+                    color: data.color,
+                    time: data.time });
+
                 } catch (e) {
                   //TODO handle the exception
                 }
