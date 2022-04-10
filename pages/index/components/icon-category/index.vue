@@ -46,6 +46,11 @@ export default {
 					url :`/pages/list/list?type=${module}` 
 				})
 			}
+			else if(module === 'column'){
+				uni.navigateTo({
+					url :`/pages/list/list?type=${module}` 
+				})
+			}
 		}
 	}
 };

@@ -19,3 +19,13 @@ export const searchApi= ({keyWord, type, page}) => {
 	const options = {}
 	return request.get(url, data, options)
 }
+/**
+ * 获取专栏列表
+ * course课程，column专栏
+ */
+export const getColumnListApi= (page) => {
+	const url = '/mobile/column/list'
+	const data = { page }
+	const options = {}
+	return request.get(url, data, options)
+}

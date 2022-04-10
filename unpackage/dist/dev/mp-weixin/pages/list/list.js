@@ -194,12 +194,17 @@ var _mescrollMixins = _interopRequireDefault(__webpack_require__(/*! @/uni_modul
       uni.setNavigationBarTitle({
         title: '电子书列表' });
 
+    } else if (this.type === 'column') {
+      uni.setNavigationBarTitle({
+        title: '专栏列表' });
+
     }
   },
   methods: {
     upCallback: function upCallback(_ref) {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var num, fetchApiMap, fetchApi, _yield$fetchApi, data;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:num = _ref.num;
                 fetchApiMap = {
                   course: _this.$http.getCourseListApi,
+                  column: _this.$http.getColumnListApi,
                   group: _this.$http.getGroupListApi,
                   flashsale: _this.$http.getFlashsaleListApi,
                   book: _this.$http.getBookListApi,

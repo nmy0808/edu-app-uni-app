@@ -78,6 +78,10 @@ export default {
 				 url = `/pages/${this.module}-detail/${this.module}-detail?id=${item.id}`
 				url += `&module=${this.module}`
 			}
+			// 当前是否是活动秒杀类型
+			if(this.module === 'column'){
+				 url = `/pages/${this.module}-detail/${this.module}-detail?id=${item.id}`
+			}
 			// 跳转
 			// 详情页只有两种类型 'column'/'course'
 			uni.navigateTo({ url });

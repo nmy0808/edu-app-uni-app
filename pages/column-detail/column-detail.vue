@@ -137,7 +137,7 @@ export default {
 			params.type = 'column'
 			const fetchApiMap = {
 				activity: this.$http.getGroupDetailApi,
-				normal: this.$http.getCourseDetailApi
+				normal: this.$http.getColumnDetailApi
 			};
 			const fetchApi = this.module
 				? fetchApiMap['activity']

@@ -2470,11 +2470,11 @@ var setCollectApi = function setCollectApi(_ref) {var goods_id = _ref.goods_id,t
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.searchApi = exports.getColumnDetailApi = void 0;var _request = _interopRequireDefault(__webpack_require__(/*! @/http/request.js */ 15));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.getColumnListApi = exports.searchApi = exports.getColumnDetailApi = void 0;var _request = _interopRequireDefault(__webpack_require__(/*! @/http/request.js */ 15));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 /**
-                                                                                                                                                                                                                                                                                                      * 获取专栏详情
-                                                                                                                                                                                                                                                                                                      */
+                                                                                                                                                                                                                                                                                                                                 * 获取专栏详情
+                                                                                                                                                                                                                                                                                                                                 */
 var getColumnDetailApi = function getColumnDetailApi(_ref) {var id = _ref.id;
   var url = '/mobile/column/read';
   var data = { id: id };
@@ -2490,7 +2490,17 @@ var searchApi = function searchApi(_ref2) {var keyWord = _ref2.keyWord,type = _r
   var data = { keyword: keyWord, type: type, page: page };
   var options = {};
   return _request.default.get(url, data, options);
-};exports.searchApi = searchApi;
+};
+/**
+    * 获取专栏列表
+    * course课程，column专栏
+    */exports.searchApi = searchApi;
+var getColumnListApi = function getColumnListApi(page) {
+  var url = '/mobile/column/list';
+  var data = { page: page };
+  var options = {};
+  return _request.default.get(url, data, options);
+};exports.getColumnListApi = getColumnListApi;
 
 /***/ }),
 

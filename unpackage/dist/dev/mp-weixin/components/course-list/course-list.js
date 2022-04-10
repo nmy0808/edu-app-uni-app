@@ -217,6 +217,10 @@ var constant = {
         url = "/pages/".concat(this.module, "-detail/").concat(this.module, "-detail?id=").concat(item.id);
         url += "&module=".concat(this.module);
       }
+      // 当前是否是活动秒杀类型
+      if (this.module === 'column') {
+        url = "/pages/".concat(this.module, "-detail/").concat(this.module, "-detail?id=").concat(item.id);
+      }
       // 跳转
       // 详情页只有两种类型 'column'/'course'
       uni.navigateTo({ url: url });

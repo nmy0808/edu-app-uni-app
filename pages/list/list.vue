@@ -35,12 +35,17 @@
 				uni.setNavigationBarTitle({
 					title: '电子书列表'
 				})
+			}else if(this.type === 'column'){
+				uni.setNavigationBarTitle({
+					title: '专栏列表'
+				})
 			}
 		},
 		methods:{
 			async upCallback( {num}){
 				const fetchApiMap = {
 					course: this.$http.getCourseListApi,
+					column: this.$http.getColumnListApi,
 					group: this.$http.getGroupListApi,
 					flashsale: this.$http.getFlashsaleListApi,
 					book: this.$http.getBookListApi,

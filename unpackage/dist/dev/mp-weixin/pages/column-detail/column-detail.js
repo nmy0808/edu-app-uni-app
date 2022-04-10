@@ -307,7 +307,7 @@ var _default =
                 params.type = 'column';
                 fetchApiMap = {
                   activity: _this.$http.getGroupDetailApi,
-                  normal: _this.$http.getCourseDetailApi };
+                  normal: _this.$http.getColumnDetailApi };
 
                 fetchApi = _this.module ?
                 fetchApiMap['activity'] :
