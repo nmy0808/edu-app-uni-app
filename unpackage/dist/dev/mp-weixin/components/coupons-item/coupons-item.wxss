@@ -57,6 +57,28 @@
   justify-content: center;
   font-size: 14px;
 }
+.coupons-item.is-vertical.data-v-fa872738 {
+  display: flex;
+  width: 100%;
+  margin: 20rpx 0;
+  height: 160rpx;
+}
+.coupons-item.is-vertical .coupons-item-left.data-v-fa872738 {
+  flex: 1;
+}
+.coupons-item.is-vertical .coupons-item-left .coupons-tprice.data-v-fa872738 {
+  margin-top: 20rpx;
+}
+.coupons-item.is-vertical .coupons-item-right.data-v-fa872738 {
+  flex: none;
+  width: 120rpx;
+}
+.coupons-item.is-get .coupons-item-left.data-v-fa872738 {
+  background-color: #dbe0e4;
+}
+.coupons-item.is-get .coupons-item-right.data-v-fa872738 {
+  background-color: #dbe0e4;
+}
 .coupons-item.data-v-fa872738:first-of-type {
   margin-left: 20rpx;
 }

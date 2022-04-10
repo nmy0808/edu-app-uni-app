@@ -45,9 +45,9 @@ export default {
 	methods: {
 		async getList() {
 			const fetchApi = this.fetchApiMap[this.type];
-			const params = {};
-			params.page = this.page;
-			const { data } = await fetchApi(params);
+			// const params = {};
+			// params.page = this.page;
+			const { data } = await fetchApi(this.page);
 			this.list = data.rows
 			console.log( data.rows, "///");
 		}

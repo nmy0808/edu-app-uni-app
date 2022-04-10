@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "mescroll-body": "/uni_modules/mescroll-uni/components/mescroll-body/mescroll-body",
+    "book-list": "/components/book-list/book-list",
+    "course-list": "/components/course-list/course-list"
+  }
+}

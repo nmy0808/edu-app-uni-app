@@ -1,6 +1,6 @@
 {
+  "component": true,
   "usingComponents": {
     "coupons-item": "/components/coupons-item/coupons-item"
-  },
-  "component": true
+  }
 }

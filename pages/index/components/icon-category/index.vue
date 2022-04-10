@@ -2,7 +2,9 @@
 <template>
 	<view class="icon-category-container">
 		<template v-for="(item,index) in data">
-			<view class="icon-category-item" :key='index'>
+			<view class="icon-category-item" :key='index'
+				@click="toPage(item)"
+			>
 				<image class="icon-category-item-img" :src="item.src" mode=""></image>
 				<view class="icon-category-item-text">{{item.name}}</view>
 			</view>
@@ -18,6 +20,31 @@ export default {
 			type: Array,
 			default: () => {
 				return [];
+			}
+		}
+	},
+	methods:{
+		toPage(item){
+			const module = item.module
+			if(module === 'group'){
+				uni.navigateTo({
+					url :`/pages/list/list?type=${module}` 
+				})
+			}
+			else if(module === 'flashsale'){
+				uni.navigateTo({
+					url :`/pages/list/list?type=${module}` 
+				})
+			}
+			else if(module === 'book'){
+				uni.navigateTo({
+					url :`/pages/list/list?type=${module}` 
+				})
+			}
+			else if(module === 'live'){
+				uni.navigateTo({
+					url :`/pages/list/list?type=${module}` 
+				})
 			}
 		}
 	}

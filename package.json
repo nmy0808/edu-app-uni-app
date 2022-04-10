@@ -1,0 +1,24 @@
+{
+  "name": "edu-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nmy0808/edu-app-uni-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nmy0808/edu-app-uni-app/issues"
+  },
+  "homepage": "https://github.com/nmy0808/edu-app-uni-app#readme",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "xgplayer": "^2.31.6",
+    "xgplayer-flv": "^2.5.1"
+  }
+}

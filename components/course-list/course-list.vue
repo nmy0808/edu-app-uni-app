@@ -29,7 +29,8 @@ const constant = {
 	media: '图文',
 	audio: '音频',
 	video: '视频',
-	column: '专栏'
+	column: '专栏',
+	live: '直播'
 };
 export default {
 	name: 'course-list',
@@ -53,11 +54,11 @@ export default {
 	methods: {
 		// 跳转至对应类型的详情页
 		toPageDetail(item) {
-	
 			let type = ''
 			if(item.type === 'column' || !item.type){
 				 type ='column'
-			}else{
+			}
+			else{
 				 type ='course'
 			}
 			let url = `/pages/${type}-detail/${type}-detail?id=${item.id}`
@@ -72,7 +73,11 @@ export default {
 				//如果是拼团类型, 传入参数 model和秒杀id
 				url += `&module=${this.module}&flashsale_id=${item.flashsale_id}`
 			}
-			
+			// 当前是否是活动秒杀类型
+			if(this.module === 'live'){
+				 url = `/pages/${this.module}-detail/${this.module}-detail?id=${item.id}`
+				url += `&module=${this.module}`
+			}
 			// 跳转
 			// 详情页只有两种类型 'column'/'course'
 			uni.navigateTo({ url });

@@ -51,7 +51,7 @@ export default {
 			* 退出登录
 			*/
 		async logout(ctx){
-			await $http.logoutApi();
+			 $http.logoutApi();
 			ctx.commit('clearAll')
 			uni.$emit('login')
 			uni.reLaunch({

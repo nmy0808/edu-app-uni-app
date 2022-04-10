@@ -5,7 +5,20 @@
     "pages/my/my",
     "pages/login/login",
     "pages/find-password/find-password",
-    "pages/bind-phone/bind-phone"
+    "pages/bind-phone/bind-phone",
+    "pages/userinfo/userinfo",
+    "pages/order/order",
+    "pages/setting/setting",
+    "pages/update-password/update-password",
+    "pages/coupon/coupon",
+    "pages/course-detail/course-detail",
+    "pages/column-detail/column-detail",
+    "pages/search/search",
+    "pages/order-detail/order-detail",
+    "pages/list/list",
+    "pages/book-detail/book-detail",
+    "pages/book/book",
+    "pages/live-detail/live-detail"
   ],
   "subPackages": [],
   "window": {

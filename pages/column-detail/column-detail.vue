@@ -14,6 +14,18 @@
 					:module="module"
 				 ></countdown>
 			 </template>
+			 <!-- 如果是秒杀 -->
+			 <template v-if="module ==='flashsale' && isLoaded">
+			 				 <countdown
+			 					:startTime="detailData.flashsale.start_time"
+			 					:endTime="detailData.flashsale.end_time"
+								:usedNum='detailData.flashsale.used_num'
+			 					:snum='detailData.flashsale.s_num'
+			 					:price='detailData.flashsale.price'
+			 					:oprice='detailData.price'
+			 					:module="module"
+			 				 ></countdown>
+			 </template>
 		</view>
 		<!--  -->
 		<tabs v-model="tabIndex" :data="tabs"></tabs>
@@ -61,9 +73,8 @@
 </template>
 
 <script>
-import CourseContent from './components/column-content.vue';
 export default {
-	components: { CourseContent },
+	components: {  },
 	data() {
 		return {
 			id: null,

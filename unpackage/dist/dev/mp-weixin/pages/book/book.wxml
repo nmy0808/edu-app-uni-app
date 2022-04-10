@@ -1,0 +1,1 @@
+<view class="book-page"><mp-html vue-id="59a10720-1" content="{{content}}" bind:__l="__l"></mp-html><action-bar vue-id="59a10720-2" menus="{{menus}}" currentIndex="{{currentIndex}}" data-event-opts="{{[['^select',[['handleCurrentIndexChange']]],['^change',[['handleCurrentIndexChange']]]]}}" bind:select="__e" bind:change="__e" bind:__l="__l"></action-bar></view>

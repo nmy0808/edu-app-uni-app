@@ -43,6 +43,7 @@
 .course-item-container .course-item-cover .course-image.data-v-1990ede0 {
   width: 100%;
   height: 100%;
+  background-color: #f8f8f8;
 }
 .course-item-container .course-item-cover .course-item-tag.data-v-1990ede0 {
   position: absolute;
@@ -56,7 +57,7 @@
 }
 .course-item-container .course-item-desc .course-item-desc-title.data-v-1990ede0 {
   width: 340rpx;
-  font-size: #2C405A;
+  font-size: #2c405a;
 }
 .course-item-container .course-item-desc .course-item-desc-subtitle.data-v-1990ede0 {
   color: #ccc;
@@ -66,7 +67,7 @@
 }
 .course-item-container .course-item-desc .course-item-desc-price .course-price.data-v-1990ede0 {
   color: red;
-  font-size: #2C405A;
+  font-size: #2c405a;
   margin-right: 20rpx;
 }
 .course-item-container .course-item-desc .course-item-desc-price .course-tprice.data-v-1990ede0 {

@@ -34,7 +34,7 @@
   padding: 0 40rpx;
 }
 .login-page .login-body.data-v-b237504c::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   right: 0;
@@ -56,7 +56,7 @@
   color: #5ccb84;
 }
 .login-page .login-body .login-other .login-find-password.data-v-b237504c {
-  color: #A9A5A0;
+  color: #a9a5a0;
 }
 .login-page .login-body .login-auth.data-v-b237504c {
   display: flex;
@@ -85,7 +85,7 @@
   border: 0;
 }
 .login-page.data-v-b237504c .checklist-text {
-  color: #A9A5A0 !important;
+  color: #a9a5a0 !important;
 }
 .login-page .btn-login.data-v-b237504c {
   color: #ffffff;

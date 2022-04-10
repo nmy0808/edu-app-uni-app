@@ -29,6 +29,7 @@
   background-color: #5ccb84;
   height: 360rpx;
   text-align: center;
+  position: relative;
 }
 .my-page .my-user.data-v-0be17cc6 {
   display: flex;
@@ -52,5 +53,33 @@
 .my-page .my-user .user-desc .user-bottom.data-v-0be17cc6 {
   margin-top: 10rpx;
   font-size: 12px;
+}
+.my-page .my-icon-menu.data-v-0be17cc6 {
+  position: absolute;
+  top: 300rpx;
+  left: 20rpx;
+  right: 20rpx;
+  z-index: 999;
+  border-radius: 6px;
+  padding: 30rpx 0;
+  display: flex;
+  justify-content: space-around;
+  background: white;
+}
+.my-page .my-icon-menu .menu-item.data-v-0be17cc6 {
+  text-align: center;
+}
+.my-page .my-icon-menu .menu-item .menu-label.data-v-0be17cc6 {
+  margin-top: 4rpx;
+  font-size: 14px;
+}
+.my-page .my-list.data-v-0be17cc6 {
+  padding-top: 30rpx;
+}
+.my-page .my-list-icon.data-v-0be17cc6 {
+  color: #5ccb84;
+}
+.my-page .my-list-label.data-v-0be17cc6 {
+  margin-left: 10rpx;
 }
 

@@ -16,6 +16,13 @@
           "name": "",
           "pathName": "pages/my/my",
           "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "live",
+          "pathName": "pages/list/list",
+          "query": "type=live",
           "scene": null,
           "launchMode": "default"
         }

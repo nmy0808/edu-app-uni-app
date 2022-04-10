@@ -65,7 +65,7 @@
   color: #5ccb84;
 }
 .login-page .login-body .login-other .login-find-password.data-v-51584ef4 {
-  color: #A9A5A0;
+  color: #a9a5a0;
 }
 .login-page .login-body .login-auth.data-v-51584ef4 {
   display: flex;
@@ -94,7 +94,7 @@
   border: 0;
 }
 .login-page.data-v-51584ef4 .checklist-text {
-  color: #A9A5A0 !important;
+  color: #a9a5a0 !important;
 }
 .login-page .btn-login.data-v-51584ef4 {
   color: #ffffff;

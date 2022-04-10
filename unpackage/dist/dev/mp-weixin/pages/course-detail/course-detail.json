@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "countdown": "/components/countdown/countdown",
+    "audio-play": "/components/audio-play/audio-play",
+    "uni-icons": "/uni_modules/uni-icons/components/uni-icons/uni-icons",
+    "divider": "/components/divider/divider",
+    "mp-html": "/uni_modules/mp-html/components/mp-html/mp-html"
+  }
+}

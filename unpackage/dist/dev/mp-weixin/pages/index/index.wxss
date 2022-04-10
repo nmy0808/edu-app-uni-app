@@ -26,14 +26,16 @@
 /* 透明度 */
 /* 文章场景相关 */
 .home-page .home-search.data-v-57280228 {
-  margin: 20rpx;
+  margin: 0 20rpx;
+  margin-bottom: 20rpx;
   background-color: #f8f8f8;
-  height: 84rpx;
-  line-height: 84rpx;
+  width: 100%;
+  height: 44px;
+  line-height: 44px;
   text-align: center;
   border-radius: 2px;
   font-size: 14px;
-  color: #A9A5A0;
+  color: #a9a5a0;
 }
 .home-page .index-ad.data-v-57280228 {
   width: 100%;
