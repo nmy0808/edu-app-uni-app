@@ -2256,7 +2256,12 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   book: '电子书',
   media: '图文',
   audio: '音频',
-  video: '视频' };exports.default = _default;
+  video: '视频',
+  answer: '问答题',
+  completion: "填空题",
+  trueOrfalse: "判断题",
+  checkbox: "多选题",
+  radio: "单选选题" };exports.default = _default;
 
 /***/ }),
 
@@ -2278,6 +2283,7 @@ var map = {
 	"./learn.js": 24,
 	"./live.js": 25,
 	"./order.js": 26,
+	"./test.js": 601,
 	"./upload.js": 27,
 	"./user.js": 35
 };
@@ -16648,6 +16654,57 @@ var MescrollCompMixin = {
 
 
 MescrollCompMixin;exports.default = _default;
+
+/***/ }),
+
+/***/ 601:
+/*!**************************************************************************!*\
+  !*** /Users/nmy/Documents/HBuilderProjects/uni-app在线教育/http/api/test.js ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.summitTestApi = exports.getTestHistoryApi = exports.beginTestApi = exports.getTestListApi = void 0;var _request = _interopRequireDefault(__webpack_require__(/*! @/http/request.js */ 15));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+/**
+                                                                                                                                                                                                                                                                                                                                                         * 考试列表
+                                                                                                                                                                                                                                                                                                                                                         */
+var getTestListApi = function getTestListApi(page) {
+  var url = '/mobile/testpaper/list';
+  var data = { page: page };
+  var options = {};
+  return _request.default.get(url, data, options);
+};
+
+/**
+    * 开始考试
+    */exports.getTestListApi = getTestListApi;
+var beginTestApi = function beginTestApi(_ref) {var id = _ref.id;
+  var url = '/mobile/testpaper/read';
+  var data = { id: id };
+  var options = {};
+  return _request.default.get(url, data, options);
+};
+
+/**
+    * 我的考试记录
+    */exports.beginTestApi = beginTestApi;
+var getTestHistoryApi = function getTestHistoryApi(page) {
+  var url = '/mobile/user_test/list';
+  var data = { page: page };
+  var options = {};
+  return _request.default.get(url, data, options);
+};
+
+/**
+    * 考试交卷
+    */exports.getTestHistoryApi = getTestHistoryApi;
+var summitTestApi = function summitTestApi(_ref2) {var user_test_id = _ref2.user_test_id,value = _ref2.value;
+  var url = '/mobile/user_test/save';
+  var data = { user_test_id: user_test_id, value: value };
+  var options = {};
+  return _request.default.post(url, data, options);
+};exports.summitTestApi = summitTestApi;
 
 /***/ }),
 
