@@ -40,6 +40,15 @@
   justify-content: space-around;
   align-items: center;
 }
+.action-bar-container .action-icon-box.data-v-9640c378 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.action-bar-container .action-icon-box .action-icon-text.data-v-9640c378 {
+  font-size: 12px;
+}
 .action-bar-container .menu-box.data-v-9640c378 {
   display: flex;
   padding: 20rpx 0;

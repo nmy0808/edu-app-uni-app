@@ -170,6 +170,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _mescrollMixins = _interopRequireDefault(__webpack_require__(/*! @/uni_modules/mescroll-uni/components/mescroll-uni/mescroll-mixins.js */ 45));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
 {
   mixins: [_mescrollMixins.default],
@@ -189,8 +190,13 @@ var _mescrollMixins = _interopRequireDefault(__webpack_require__(/*! @/uni_modul
     upCallback: function upCallback(_ref) {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var num, _yield$_this$$http$ge, data;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:num = _ref.num;_context.next = 3;return (
                   _this.$http.getTestListApi(num));case 3:_yield$_this$$http$ge = _context.sent;data = _yield$_this$$http$ge.data;
                 num === 1 ? _this.list = data.rows : _this.list = _this.list.concat(data.rows);
-                _this.mescroll.endBySize(_this.list.length, data.count);
-                console.log(data);case 8:case "end":return _context.stop();}}}, _callee);}))();
+                _this.mescroll.endBySize(_this.list.length, data.count);case 7:case "end":return _context.stop();}}}, _callee);}))();
+    },
+    handleTestStatusChange: function handleTestStatusChange(index) {
+      this.list[index].is_test = true;
+    },
+    refresh: function refresh() {
+      this.mescroll.resetUpScroll();
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

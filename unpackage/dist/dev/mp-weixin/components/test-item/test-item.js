@@ -146,7 +146,11 @@ var _default2 =
       type: Object,
       default: function _default() {
         return {};
-      } } },
+      } },
+
+    index: {
+      type: Number,
+      default: -1 } },
 
 
   data: function data() {
@@ -165,6 +169,7 @@ var _default2 =
             uni.navigateTo({
               url: '/pages/test-detail/test-detail?id=' + id });
 
+            _this.$emit('change', _this.index);
           }
         } });
 

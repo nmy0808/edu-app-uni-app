@@ -22,7 +22,7 @@
 				@input="e => handleInput(e, index)"
 				placeholder="请输入答案"
 			/>
-			<button type="default" @click="handleAdd">添加填空</button>
+			<button class="mt-2" type="primary" @click="handleAdd">添加填空</button>
 		</template>
 		<!-- 判断题 -->
 		<template v-else-if="type === 'trueOrfalse'">
@@ -34,7 +34,8 @@
 		</template>
 		<!-- 单选选题 -->
 		<template v-else-if="type === 'radio'">
-			<c-radio :options='options' @change='handleInput' :value="value"></c-radio>
+			<c-judge :options='options' @change='handleInput' :value="value"></c-judge>
+			<!-- <c-radio :options='options' @change='handleInput' :value="value"></c-radio> -->
 		</template>
 	</view>
 </template>

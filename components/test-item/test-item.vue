@@ -31,6 +31,10 @@ export default {
 			default: () => {
 				return {};
 			}
+		},
+		index: {
+			type:Number,
+			default:-1
 		}
 	},
 	data() {
@@ -49,6 +53,7 @@ export default {
 						uni.navigateTo({
 							url: '/pages/test-detail/test-detail?id=' + id
 						});
+						this.$emit('change', this.index)
 					}
 				}
 			});

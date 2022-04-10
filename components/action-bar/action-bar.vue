@@ -8,16 +8,34 @@
 				type="arrow-left"
 				@click="handleToggle(-1)"
 			></uni-icons>
+			<view class="action-icon-box">
+				<uni-icons
+					class="action-icon"
+					size="30"
+					type="list"
+					@click="handleOpen"
+				></uni-icons>
+				<view class="action-icon-text">
+					{{currentIndex +1 }}/{{menus.length}}
+				</view>
+			</view>
+			<view class="action-icon-box">
+				<uni-icons
+					v-if="showSubmit"
+					class="action-icon"
+					size="30"
+					type="checkmarkempty"
+					@click="handleSubmit"
+				></uni-icons>
+				<view class="action-icon-text">
+					提交
+				</view>
+			</view>
+			
 			<uni-icons
 				class="action-icon"
 				size="30"
-				type="list"
-				@click="handleOpen"
-			></uni-icons>
-			<uni-icons
-				class="action-icon"
-				size="30"
-					:color="isNext ? '': '#ccc'"
+				:color="isNext ? '': '#ccc'"
 				type="arrow-right"
 				@click="handleToggle(1)"
 			></uni-icons>
@@ -62,6 +80,11 @@ export default {
 			default: () => {
 				return [1, 2, 3];
 			}
+		},
+		// 是否显示提交按钮
+		showSubmit:{
+			type: Boolean,
+			default: false
 		}
 	},
 	data() {
@@ -90,6 +113,9 @@ export default {
 				return;
 			}
 			this.$emit('change', {target:this.menus[index], index})
+		},
+		handleSubmit(){
+			this.$emit('submit')
 		}
 	}
 };
@@ -109,6 +135,17 @@ export default {
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
+	}
+	.action-icon-box{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		.action-icon-text{
+			font-size: 12px;
+		}
+		.action-icon {
+		}
 	}
 	.action-icon {
 	}

@@ -203,6 +203,24 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default2 =
 {
   name: 'action-bar',
@@ -222,7 +240,12 @@ var _default2 =
       type: Array,
       default: function _default() {
         return [1, 2, 3];
-      } } },
+      } },
+
+    // 是否显示提交按钮
+    showSubmit: {
+      type: Boolean,
+      default: false } },
 
 
   data: function data() {
@@ -251,6 +274,9 @@ var _default2 =
         return;
       }
       this.$emit('change', { target: this.menus[index], index: index });
+    },
+    handleSubmit: function handleSubmit() {
+      this.$emit('submit');
     } } };exports.default = _default2;
 
 /***/ }),
