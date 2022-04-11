@@ -1,7 +1,7 @@
 <!-- 社区列表 -->
 <template>
 	<view class="bbs-list-page">
-		<view class="flex align-center app-container">
+		<view class="flex align-center app-container bbs-navigator">
 			<uni-icons type="back" @click="toPageIndex" size="20"></uni-icons>
 			<uni-search-bar
 				class="flex-1"
@@ -10,7 +10,7 @@
 				cancelButton="none"
 				@confirm="search"
 			/>
-			<uni-icons type="plus" @click="handlePublish" size="20"></uni-icons>
+			<uni-icons type="plus" @click="toPagePublish" size="20"></uni-icons>
 		</view>
 		<scroll-view
 			scroll-x="true"
@@ -22,6 +22,7 @@
 					class="bbs-item"
 					:class="{ active: item.id === bbsTemp.currentId }"
 					:key="index"
+					@click='handleBbsItem(item)'
 				>
 					{{ item.title }}
 				</view>
@@ -85,6 +86,7 @@ export default {
 	mixins: [MescrollMixin], 
 	data() {
 		return {
+			keyword: '',
 			bbsTemp: {
 				currentId: 0,
 				page: 1,
@@ -133,6 +135,7 @@ export default {
 			params.keyword = this.keyword
 			params.bbs_id = this.bbsTemp.currentId
 			params.page = num
+			console.log(params);
 			const { data } = await this.$http.getPostListApi(params);
 			num === 1 ? this.postList = data.rows : this.postList = this.postList.concat(data.rows)
 			this.mescroll.endBySize(this.postList.length , data.count)
@@ -141,11 +144,25 @@ export default {
 		/**
 		 * 搜索
 		 */
-		search() {},
+		search(e) {
+			this.keyword = e.value
+			this.mescroll.resetUpScroll()
+		},
+		/**
+		 * 切换社区
+		 */
+		handleBbsItem(item){
+			this.bbsTemp.currentId = item.id
+			this.mescroll.resetUpScroll()
+		},
 		/**
 		 * 发布
 		 */
-		handlePublish() {},
+		toPagePublish() {
+					uni.navigateTo({
+						url :'/pages/publish-post/publish-post'
+					})
+		},
 		toPageIndex() {
 			uni.reLaunch({
 				url: '/pages/index/index'
@@ -156,6 +173,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+	.bbs-navigator{
+		padding-top: var(--status-bar-height);
+	}
 .bbs-box {
 	white-space: nowrap;
 	margin-bottom: 20rpx;
@@ -166,6 +186,7 @@ export default {
 	font-size: 14px;
 	border: 1px solid $uni-border-color-light;
 	border-radius: $uni-border-radius-base;
+	background-color: $uni-img-default-color;
 	margin: 0 10rpx;
 	&:first-of-type {
 		margin-left: 20rpx;

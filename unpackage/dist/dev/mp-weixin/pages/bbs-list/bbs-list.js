@@ -247,11 +247,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _mescrollMixins = _interopRequireDefault(__webpack_require__(/*! @/uni_modules/mescroll-uni/components/mescroll-uni/mescroll-mixins.js */ 45));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
 {
   mixins: [_mescrollMixins.default],
   data: function data() {
     return {
+      keyword: '',
       bbsTemp: {
         currentId: 0,
         page: 1,
@@ -299,20 +301,35 @@ var _mescrollMixins = _interopRequireDefault(__webpack_require__(/*! @/uni_modul
                 params = {};
                 params.keyword = _this2.keyword;
                 params.bbs_id = _this2.bbsTemp.currentId;
-                params.page = num;_context2.next = 7;return (
-                  _this2.$http.getPostListApi(params));case 7:_yield$_this2$$http$g = _context2.sent;data = _yield$_this2$$http$g.data;
+                params.page = num;
+                console.log(params);_context2.next = 8;return (
+                  _this2.$http.getPostListApi(params));case 8:_yield$_this2$$http$g = _context2.sent;data = _yield$_this2$$http$g.data;
                 num === 1 ? _this2.postList = data.rows : _this2.postList = _this2.postList.concat(data.rows);
                 _this2.mescroll.endBySize(_this2.postList.length, data.count);
-                console.log(data.rows);case 12:case "end":return _context2.stop();}}}, _callee2);}))();
+                console.log(data.rows);case 13:case "end":return _context2.stop();}}}, _callee2);}))();
     },
     /**
         * 搜索
         */
-    search: function search() {},
+    search: function search(e) {
+      this.keyword = e.value;
+      this.mescroll.resetUpScroll();
+    },
     /**
-                                   * 发布
-                                   */
-    handlePublish: function handlePublish() {},
+        * 切换社区
+        */
+    handleBbsItem: function handleBbsItem(item) {
+      this.bbsTemp.currentId = item.id;
+      this.mescroll.resetUpScroll();
+    },
+    /**
+        * 发布
+        */
+    toPagePublish: function toPagePublish() {
+      uni.navigateTo({
+        url: '/pages/publish-post/publish-post' });
+
+    },
     toPageIndex: function toPageIndex() {
       uni.reLaunch({
         url: '/pages/index/index' });

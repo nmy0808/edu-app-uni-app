@@ -4,7 +4,7 @@ import store from "@/store";
 /**
  * progress : 进度条回调
  */
-export const uploadApi = (progress = null) => {
+export const uploadApi = (progress = null, chooseOptions = {}) => {
   const header = {};
   header.appid = appid;
   header.token = store.state.user.token;
@@ -12,8 +12,13 @@ export const uploadApi = (progress = null) => {
   const fileName = "file";
   return new Promise((resolve, reject) => {
     const uploadTask = uni.chooseImage({
+			...chooseOptions,
       success: (chooseImageRes) => {
         const tempFilePaths = chooseImageRes.tempFilePaths;
+				uni.showLoading({
+					title: '上传中',
+					mask: true
+				})
         const uploadTask = uni.uploadFile({
           url,
           header,
@@ -40,6 +45,9 @@ export const uploadApi = (progress = null) => {
             });
             reject(err.message);
           },
+					complete() {
+						uni.hideLoading()
+					}
         });
         // 进度条
         progress &&

@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view :style="{ height: statusBar + 'px', background: color }">6</view>
+		<view :style="{ height: statusBar + 'px', background: color }"></view>
 	</view>
 </template>
 

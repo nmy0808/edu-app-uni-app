@@ -218,6 +218,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/publish-post/publish-post",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
