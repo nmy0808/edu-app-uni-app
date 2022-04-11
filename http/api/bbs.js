@@ -59,7 +59,7 @@ export const unPostSupportApi= ({post_id}) => {
  * reply_user.username	ceshi22	String		被回复用户名
  * reply_user.avatar		String		被回复用户头像
  */
-export const getPostReplyApi= ({post_id, content, reply_id, reply_user}) => {
+export const getPostReplyApi= ({post_id, content, reply_id = 0, reply_user}) => {
 	const url = '/mobile/post/reply'
 	const data = { post_id, content, reply_id, reply_user }
 	const options = {  }

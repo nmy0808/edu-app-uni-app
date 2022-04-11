@@ -23,7 +23,8 @@
     "pages/test-detail/test-detail",
     "pages/bbs/bbs",
     "pages/bbs-list/bbs-list",
-    "pages/publish-post/publish-post"
+    "pages/publish-post/publish-post",
+    "pages/post-detail/post-detail"
   ],
   "subPackages": [],
   "window": {

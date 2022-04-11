@@ -43,7 +43,7 @@
 			@up="upCallback"
 		>
 			<view class="post-item app-container" v-for="(item,index) in postList" :key='index'>
-				<view class="post-item-header">
+				<view class="post-item-header"  @click="toPageDetail(item)">
 					<image class="post-avatar" :src="item.user.avatar ||'/static/default/default_avatar.png'" mode=""></image>
 					<view class="post-userinfo">
 						<view class="post-username">{{item.user.name}}</view>
@@ -53,7 +53,7 @@
 						精华
 					</view>
 				</view>
-				<view class="post-item-body">
+				<view class="post-item-body" @click="toPageDetail(item)">
 					<mp-html :content='item.desc.text'></mp-html>
 					<view class="post-img-box">
 						<image class="post-img-item" :src="img" v-for="(img,iindex) in item.desc.images" :key='iindex'>
@@ -185,6 +185,11 @@ export default {
 		toPageIndex() {
 			uni.reLaunch({
 				url: '/pages/index/index'
+			});
+		},
+		toPageDetail(item) {
+			uni.navigateTo({
+				url: '/pages/post-detail/post-detail?id='+item.id
 			});
 		}
 	}

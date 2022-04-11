@@ -353,6 +353,11 @@ var _mescrollMixins = _interopRequireDefault(__webpack_require__(/*! @/uni_modul
       uni.reLaunch({
         url: '/pages/index/index' });
 
+    },
+    toPageDetail: function toPageDetail(item) {
+      uni.navigateTo({
+        url: '/pages/post-detail/post-detail?id=' + item.id });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

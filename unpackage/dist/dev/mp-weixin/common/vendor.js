@@ -16735,7 +16735,7 @@ var unPostSupportApi = function unPostSupportApi(_ref5) {var post_id = _ref5.pos
     * reply_user.username	ceshi22	String		被回复用户名
     * reply_user.avatar		String		被回复用户头像
     */exports.unPostSupportApi = unPostSupportApi;
-var getPostReplyApi = function getPostReplyApi(_ref6) {var post_id = _ref6.post_id,content = _ref6.content,reply_id = _ref6.reply_id,reply_user = _ref6.reply_user;
+var getPostReplyApi = function getPostReplyApi(_ref6) {var post_id = _ref6.post_id,content = _ref6.content,_ref6$reply_id = _ref6.reply_id,reply_id = _ref6$reply_id === void 0 ? 0 : _ref6$reply_id,reply_user = _ref6.reply_user;
   var url = '/mobile/post/reply';
   var data = { post_id: post_id, content: content, reply_id: reply_id, reply_user: reply_user };
   var options = {};
