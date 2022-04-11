@@ -248,6 +248,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 var _mescrollMixins = _interopRequireDefault(__webpack_require__(/*! @/uni_modules/mescroll-uni/components/mescroll-uni/mescroll-mixins.js */ 45));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
 {
   mixins: [_mescrollMixins.default],
@@ -329,6 +331,23 @@ var _mescrollMixins = _interopRequireDefault(__webpack_require__(/*! @/uni_modul
       uni.navigateTo({
         url: '/pages/publish-post/publish-post' });
 
+    },
+    // 点赞
+    handleSup: function handleSup(item) {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var fechApiMap, params, fetchApi, _yield$fetchApi, data;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
+                // 0:点赞, 1:取消点赞
+                fechApiMap = [_this3.$http.postSupportApi, _this3.$http.unPostSupportApi];
+                params = {};
+                params.post_id = item.id;
+                fetchApi = fechApiMap[item.issupport ? 1 : 0];_context3.next = 6;return (
+                  fetchApi(params));case 6:_yield$fetchApi = _context3.sent;data = _yield$fetchApi.data;
+                item.issupport = !item.issupport;
+                if (item.issupport) {
+                  _this3.toast('已点赞');
+                  item.support_count++;
+                } else {
+                  _this3.toast('取消点赞');
+                  item.support_count--;
+                }case 10:case "end":return _context3.stop();}}}, _callee3);}))();
     },
     toPageIndex: function toPageIndex() {
       uni.reLaunch({

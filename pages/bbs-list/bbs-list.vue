@@ -67,7 +67,9 @@
 					</view>
 					<view class="post-icon-box">
 						<!-- issupport -->
-						<uni-icons class='post-icon' :type="item.issupport?'heart-filled':'heart'" size="20"></uni-icons>
+						<uni-icons class='post-icon'
+						 @click='handleSup(item)'
+						:type="item.issupport?'heart-filled':'heart'" size="20"></uni-icons>
 						<text>{{item.support_count}}</text>
 					</view>
 					<view class="post-date">
@@ -162,6 +164,23 @@ export default {
 					uni.navigateTo({
 						url :'/pages/publish-post/publish-post'
 					})
+		},
+		// 点赞
+		async handleSup(item){
+			// 0:点赞, 1:取消点赞
+			const fechApiMap = [this.$http.postSupportApi,this.$http.unPostSupportApi]
+			const params = {}
+			params.post_id = item.id
+			const fetchApi = fechApiMap[item.issupport ? 1 : 0]
+			const { data }  = await fetchApi(params)
+			item.issupport = !item.issupport
+			if(item.issupport){
+				this.toast('已点赞')
+				item.support_count ++
+			}else{
+				this.toast('取消点赞')
+				item.support_count --
+			}
 		},
 		toPageIndex() {
 			uni.reLaunch({

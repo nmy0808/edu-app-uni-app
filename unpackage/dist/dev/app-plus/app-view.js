@@ -20297,7 +20297,12 @@ var render = function() {
                     [
                       _c("uni-icons", {
                         staticClass: _vm._$g("30-" + $31, "sc"),
-                        attrs: { _i: "30-" + $31 }
+                        attrs: { _i: "30-" + $31 },
+                        on: {
+                          click: function($event) {
+                            return _vm.$handleViewEvent($event)
+                          }
+                        }
                       }),
                       _c("v-uni-text", { attrs: { _i: "31-" + $31 } }, [
                         _vm._v(_vm._$g("31-" + $31, "t0-0"))
