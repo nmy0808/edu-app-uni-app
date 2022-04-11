@@ -56,6 +56,11 @@ export default {
 					url :`/pages/test-list/test-list?type=${module}` 
 				})
 			}
+			else if(module === 'bbs'){
+				uni.navigateTo({
+					url :`/pages/bbs-list/bbs-list?type=${module}` 
+				})
+			}
 		}
 	}
 };

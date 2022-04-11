@@ -303,8 +303,8 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/typeMap/index.js *
 
                 _this.getData().catch(function (_) {
                   setTimeout(function () {
-                    uni.navigateTo({
-                      url: '/pages/test-list/test-list' });
+                    uni.navigateBack({
+                      delta: 1 });
 
                   }, 600);
                 }));case 4:
@@ -334,7 +334,16 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/typeMap/index.js *
               1000);case 6:case "end":return _context2.stop();}}}, _callee2);}))();
   },
   onBackPress: function onBackPress() {
-    this.handleSubmit();
+    uni.showModal({
+      title: '确定放弃本次考试?',
+      success: function success(_ref2) {var confirm = _ref2.confirm;
+        if (confirm) {
+          uni.redirectTo({
+            url: '/pages/test-list/test-list' });
+
+        }
+      } });
+
     return true;
   },
   beforeDestroy: function beforeDestroy() {
@@ -355,13 +364,13 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/typeMap/index.js *
     /**
         * 切换题目
         */
-    handleToggle: function handleToggle(_ref2) {var index = _ref2.index;
+    handleToggle: function handleToggle(_ref3) {var index = _ref3.index;
       this.currentIndex = index;
     },
     /**
         * 答题
         */
-    handleAnswerChange: function handleAnswerChange(_ref3) {var value = _ref3.value;
+    handleAnswerChange: function handleAnswerChange(_ref4) {var value = _ref4.value;
       var temp = JSON.parse(JSON.stringify(this.answer));
       temp[this.currentIndex] = value;
       this.answer = temp;
@@ -369,7 +378,7 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/typeMap/index.js *
     handleSubmit: function handleSubmit() {var _this3 = this;
       uni.showModal({
         title: '确定提交试卷?',
-        success: function () {var _success = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4(_ref4) {var confirm, params;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:confirm = _ref4.confirm;if (!
+        success: function () {var _success = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4(_ref5) {var confirm, params;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:confirm = _ref5.confirm;if (!
                     confirm) {_context4.next = 12;break;}if (!(
                     _this3.answer.length !== _this3.menus.length)) {_context4.next = 5;break;}
                     _this3.toast('答题不完整, 请检查');return _context4.abrupt("return");case 5:
@@ -381,9 +390,12 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/typeMap/index.js *
                       _this3.$http.summitTestApi(params));case 10:
                     _this3.toast('提交成功!');
                     setTimeout(function () {
-                      uni.navigateTo({
+                      uni.redirectTo({
                         url: '/pages/test-list/test-list' });
 
+                      // uni.navigateBack({
+                      // 	delta: 1
+                      // })
                     }, 300);case 12:case "end":return _context4.stop();}}}, _callee4);}));function success(_x) {return _success.apply(this, arguments);}return success;}() });
 
 
@@ -417,9 +429,12 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/typeMap/index.js *
                   _this4.$http.summitTestApi(params));case 6:
                 _this4.toast('提交成功!');
                 setTimeout(function () {
-                  uni.navigateTo({
-                    url: '/pages/test-list/test-list' });
+                  uni.navigateBack({
+                    delta: 1 });
 
+                  // uni.redirectTo({
+                  // 	url:'/pages/test-list/test-list'
+                  // })
                 }, 300);case 8:case "end":return _context5.stop();}}}, _callee5);}))();
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

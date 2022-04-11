@@ -20,7 +20,9 @@
     "pages/book/book",
     "pages/live-detail/live-detail",
     "pages/test-list/test-list",
-    "pages/test-detail/test-detail"
+    "pages/test-detail/test-detail",
+    "pages/bbs/bbs",
+    "pages/bbs-list/bbs-list"
   ],
   "subPackages": [],
   "window": {

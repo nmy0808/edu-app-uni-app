@@ -2273,6 +2273,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"./bbs.js": 601,
 	"./book.js": 14,
 	"./collect.js": 18,
 	"./column.js": 19,
@@ -2283,7 +2284,7 @@ var map = {
 	"./learn.js": 24,
 	"./live.js": 25,
 	"./order.js": 26,
-	"./test.js": 601,
+	"./test.js": 630,
 	"./upload.js": 27,
 	"./user.js": 35
 };
@@ -16658,6 +16659,113 @@ MescrollCompMixin;exports.default = _default;
 /***/ }),
 
 /***/ 601:
+/*!*************************************************************************!*\
+  !*** /Users/nmy/Documents/HBuilderProjects/uni-app在线教育/http/api/bbs.js ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.publishPostApi = exports.getMyPostListApi = exports.deletePostApi = exports.getPostReplyApi = exports.unPostSupportApi = exports.postSupportApi = exports.getPostCommentListApi = exports.getPostDetailApi = exports.getPostListApi = exports.getBbsListApi = void 0;var _request = _interopRequireDefault(__webpack_require__(/*! @/http/request.js */ 15));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+/**
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           * 社区列表
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           */
+var getBbsListApi = function getBbsListApi() {var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+  var url = '/mobile/bbs';
+  var data = { page: page };
+  var options = {};
+  return _request.default.get(url, data, options);
+};
+/**
+    * 帖子列表
+    */exports.getBbsListApi = getBbsListApi;
+var getPostListApi = function getPostListApi(_ref) {var page = _ref.page,keyword = _ref.keyword,bbs_id = _ref.bbs_id;
+  var url = '/mobile/post/list';
+  var data = { page: page, keyword: keyword, bbs_id: bbs_id };
+  var options = {};
+  return _request.default.get(url, data, options);
+};
+/**
+    * 查看帖子
+    */exports.getPostListApi = getPostListApi;
+var getPostDetailApi = function getPostDetailApi(_ref2) {var id = _ref2.id;
+  var url = '/mobile/post/read';
+  var data = { id: id };
+  var options = {};
+  return _request.default.get(url, data, options);
+};
+/**
+    * 查看帖子评论列表
+    */exports.getPostDetailApi = getPostDetailApi;
+var getPostCommentListApi = function getPostCommentListApi(_ref3) {var page = _ref3.page,post_id = _ref3.post_id;
+  var url = '/mobile/post_comment';
+  var data = { page: page, post_id: post_id };
+  var options = {};
+  return _request.default.get(url, data, options);
+};
+/**
+    * 点赞帖子
+    */exports.getPostCommentListApi = getPostCommentListApi;
+var postSupportApi = function postSupportApi(_ref4) {var post_id = _ref4.post_id;
+  var url = '/mobile/post/support';
+  var data = { post_id: post_id };
+  var options = {};
+  return _request.default.post(url, data, options);
+};
+/**
+    * 取消点赞帖子
+    */exports.postSupportApi = postSupportApi;
+var unPostSupportApi = function unPostSupportApi(_ref5) {var post_id = _ref5.post_id;
+  var url = '/mobile/post/unsupport';
+  var data = { post_id: post_id };
+  var options = {};
+  return _request.default.post(url, data, options);
+};
+/**
+    * 评论帖子
+    * reply_user.id	252	Integer		被回复用户id
+    * reply_user.username	ceshi22	String		被回复用户名
+    * reply_user.avatar		String		被回复用户头像
+    */exports.unPostSupportApi = unPostSupportApi;
+var getPostReplyApi = function getPostReplyApi(_ref6) {var post_id = _ref6.post_id,content = _ref6.content,reply_id = _ref6.reply_id,reply_user = _ref6.reply_user;
+  var url = '/mobile/post/reply';
+  var data = { post_id: post_id, content: content, reply_id: reply_id, reply_user: reply_user };
+  var options = {};
+  return _request.default.post(url, data, options);
+};
+/**
+    * 删除帖子
+    */exports.getPostReplyApi = getPostReplyApi;
+var deletePostApi = function deletePostApi(_ref7) {var id = _ref7.id;
+  var url = '/mobile/post/delete';
+  var data = { id: id };
+  var options = {};
+  return _request.default.post(url, data, options);
+};
+/**
+    * 我的帖子列表
+    */exports.deletePostApi = deletePostApi;
+var getMyPostListApi = function getMyPostListApi(_ref8) {var page = _ref8.page;
+  var url = '/mobile/mypost';
+  var data = { page: page };
+  var options = {};
+  return _request.default.get(url, data, options);
+};
+/**
+    * 发布帖子
+    * content.text	  String  帖子内容
+    * content.images  Array  图片链接
+    */exports.getMyPostListApi = getMyPostListApi;
+var publishPostApi = function publishPostApi(_ref9) {var bbs_id = _ref9.bbs_id,content = _ref9.content;
+  var url = '/mobile/post/save';
+  var data = { bbs_id: bbs_id, content: content };
+  var options = {};
+  return _request.default.post(url, data, options);
+};exports.publishPostApi = publishPostApi;
+
+/***/ }),
+
+/***/ 630:
 /*!**************************************************************************!*\
   !*** /Users/nmy/Documents/HBuilderProjects/uni-app在线教育/http/api/test.js ***!
   \**************************************************************************/

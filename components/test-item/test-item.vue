@@ -50,7 +50,7 @@ export default {
 				success: ({ confirm }) => {
 					if (confirm) {
 						const id = this.data.id;
-						uni.navigateTo({
+						uni.redirectTo({
 							url: '/pages/test-detail/test-detail?id=' + id
 						});
 						this.$emit('change', this.index)

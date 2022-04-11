@@ -136,8 +136,8 @@ export default {
 		});
 		await this.getData().catch(_=>{
 			setTimeout(()=>{
-				uni.navigateTo({
-					url:'/pages/test-list/test-list'
+				uni.navigateBack({
+					delta: 1
 				})
 			}, 600)
 		})
@@ -167,7 +167,16 @@ export default {
 		}, 1000)
 	},
 	onBackPress() {
-		this.handleSubmit()
+		uni.showModal({
+			title: '确定放弃本次考试?',
+			success:({confirm})=> {
+				if(confirm){
+					uni.redirectTo({
+						url:'/pages/test-list/test-list'
+					})
+				}
+			}
+		})
 		return true
 	},
 	beforeDestroy() {
@@ -214,9 +223,12 @@ export default {
 						await this.$http.summitTestApi(params)
 						this.toast('提交成功!')
 						setTimeout(()=>{
-							uni.navigateTo({
+							uni.redirectTo({
 								url:'/pages/test-list/test-list'
 							})
+							// uni.navigateBack({
+							// 	delta: 1
+							// })
 						}, 300)
 					}
 				}
@@ -250,9 +262,12 @@ export default {
 			await this.$http.summitTestApi(params)
 			this.toast('提交成功!')
 			setTimeout(()=>{
-				uni.navigateTo({
-					url:'/pages/test-list/test-list'
+				uni.navigateBack({
+					delta: 1
 				})
+				// uni.redirectTo({
+				// 	url:'/pages/test-list/test-list'
+				// })
 			}, 300)
 		}
 	}

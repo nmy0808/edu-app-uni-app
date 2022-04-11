@@ -166,7 +166,7 @@ var _default2 =
         success: function success(_ref) {var confirm = _ref.confirm;
           if (confirm) {
             var id = _this.data.id;
-            uni.navigateTo({
+            uni.redirectTo({
               url: '/pages/test-detail/test-detail?id=' + id });
 
             _this.$emit('change', _this.index);

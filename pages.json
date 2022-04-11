@@ -197,6 +197,27 @@
             }
             
         }
+        ,{
+            "path" : "pages/bbs/bbs",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/bbs-list/bbs-list",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+								"app-plus": {
+									"titleNView": false
+								}
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
