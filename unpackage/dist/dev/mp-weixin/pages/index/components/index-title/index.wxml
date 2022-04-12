@@ -1,0 +1,1 @@
+<view class="indextitle-container data-v-04b7b906"><view class="index-title-left data-v-04b7b906">{{title}}</view><block wx:if="{{isMove}}"><view data-event-opts="{{[['tap',[['handleClick',['$event']]]]]}}" class="index-title-right data-v-04b7b906" bindtap="__e">{{''+move+''}}</view></block></view>

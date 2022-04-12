@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "订单详情",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "course-item": "/components/course-item/course-item",
+    "divider": "/components/divider/divider",
+    "uni-icons": "/uni_modules/uni-icons/components/uni-icons/uni-icons"
+  }
+}

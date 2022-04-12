@@ -1,0 +1,1 @@
+<view class="nologin-container data-v-598b12a4"><image src="/static/default/noLogin.png" class="data-v-598b12a4"></image><block wx:if="{{$slots.default}}"><slot></slot></block><block wx:else><view class="data-v-598b12a4">请先登录~</view></block></view>

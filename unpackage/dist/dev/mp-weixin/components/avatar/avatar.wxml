@@ -1,0 +1,1 @@
+<image class="{{['avatar-container','data-v-1f255a24',(circle)?'circle':'']}}" style="{{'width:'+(size+'rpx')+';'+('height:'+(size+'rpx')+';')}}" src="{{img||'/static/default/default_avatar.png'}}" mode></image>

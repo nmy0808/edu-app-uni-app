@@ -1,0 +1,1 @@
+<view class="book-list"><block wx:for="{{data}}" wx:for-item="item" wx:for-index="index" wx:key="index"><book-item vue-id="{{'00aa737c-1-'+index}}" data="{{item}}" isRow="{{true}}" data-event-opts="{{[['tap',[['toPageBookDetail',['$0'],[[['data','',index]]]]]]]}}" bindtap="__e" bind:__l="__l"></book-item></block></view>

@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "tabs": "/components/tabs/tabs",
+    "uni-icons": "/uni_modules/uni-icons/components/uni-icons/uni-icons",
+    "divider": "/components/divider/divider",
+    "mp-html": "/uni_modules/mp-html/components/mp-html/mp-html",
+    "course-content": "/components/course-content/course-content"
+  }
+}

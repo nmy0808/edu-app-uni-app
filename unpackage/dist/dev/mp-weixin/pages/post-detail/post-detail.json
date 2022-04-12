@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "mp-html": "/uni_modules/mp-html/components/mp-html/mp-html",
+    "divider": "/components/divider/divider",
+    "mescroll-body": "/uni_modules/mescroll-uni/components/mescroll-body/mescroll-body",
+    "comment-item": "/components/comment-item/comment-item",
+    "uni-icons": "/uni_modules/uni-icons/components/uni-icons/uni-icons",
+    "comment-dialog": "/components/comment-dialog/comment-dialog"
+  }
+}

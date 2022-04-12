@@ -3,14 +3,304 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "uni-app",
+				"app-plus": {
+					"titleNView": false
+				}
 			}
+		}, {
+			"path": "pages/learn/learn",
+			"style": {
+				"navigationBarTitleText": "学习",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/my/my",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"enablePullDownRefresh": false
+				// #ifndef MP
+				,"navigationStyle": "custom"
+				// #endif
+			}
+
 		}
-	],
+	    ,{
+            "path" : "pages/login/login",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "登录",
+                "enablePullDownRefresh": false
+								// #ifndef MP
+								,"navigationStyle": "custom"
+								// #endif
+            }
+            
+        }
+        ,{
+            "path" : "pages/find-password/find-password",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+								// #ifndef MP
+								,"navigationStyle": "custom"
+								// #endif
+            }
+            
+        }
+        ,{
+            "path" : "pages/bind-phone/bind-phone",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/userinfo/userinfo",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "编辑资料",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+          "path" : "pages/order/order",
+          "style" :                                                                                    
+          {
+              "navigationBarTitleText": "订单",
+              "enablePullDownRefresh": false
+          }
+          
+      }
+        ,{
+            "path" : "pages/setting/setting",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的设置",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/update-password/update-password",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "修改密码",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/coupon/coupon",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的优惠券",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/course-detail/course-detail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/column-detail/column-detail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/search/search",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+								"app-plus":{
+									"titleNView": false
+								}
+            }
+            
+        }
+        ,{
+            "path" : "pages/order-detail/order-detail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "订单详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/list/list",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/book-detail/book-detail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/book/book",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/live-detail/live-detail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/test-list/test-list",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/test-detail/test-detail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        // ,{
+        //     "path" : "pages/bbs/bbs",
+        //     "style" :                                                                                    
+        //     {
+        //         "navigationBarTitleText": "",
+        //         "enablePullDownRefresh": false
+        //     }
+            
+        // }
+        ,{
+            "path" : "pages/bbs-list/bbs-list",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+								"app-plus": {
+									"titleNView": false
+								}
+            }
+            
+        }
+        ,{
+            "path" : "pages/publish-post/publish-post",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/post-detail/post-detail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/h5pay/h5pay",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/my-post/my-post",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/my-book/my-book",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的电子书",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"backgroundColor": "#F8F8F8",
+		"app-plus": {
+			"bounce": "none"
+		}
+	},
+	"tabBar": {
+		"color": "#b0abb3",
+		"selectedColor": "#00000",
+		"backgroundColor": "#f8f8f8", // 背景
+		"borderStyle": "white", //上边框
+		"fontSize": "11px",
+		"height": "52px",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"text": "首页",
+				"iconPath": "/static/tabbar/index.png",
+				"selectedIconPath": "/static/tabbar/index_selected.png"
+			},
+			{
+				"pagePath": "pages/learn/learn",
+				"text": "学习",
+				"iconPath": "/static/tabbar/learn.png",
+				"selectedIconPath": "/static/tabbar/learn_selected.png"
+			},
+			{
+				"pagePath": "pages/my/my",
+				"text": "我的",
+				"iconPath": "/static/tabbar/my.png",
+				"selectedIconPath": "/static/tabbar/my_selected.png"
+			}
+
+		]
 	}
+
+
 }

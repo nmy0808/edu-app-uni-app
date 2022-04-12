@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "uni-app",
+  "usingComponents": {
+    "mescroll-body": "/uni_modules/mescroll-uni/components/mescroll-body/mescroll-body",
+    "uni-icons": "/uni_modules/uni-icons/components/uni-icons/uni-icons",
+    "index-swiper": "/pages/index/components/index-swiper/index",
+    "icon-category": "/pages/index/components/icon-category/index",
+    "index-coupons": "/pages/index/components/index-coupons/index",
+    "index-group-list": "/pages/index/components/index-group-list/index",
+    "index-new-list": "/pages/index/components/index-new-list/index"
+  }
+}

@@ -10,6 +10,13 @@
      	{
      		"launchtype" : "local"
      	},
+<<<<<<< HEAD
+=======
+     	"mp-weixin" : 
+     	{
+     		"launchtype" : "local"
+     	},
+>>>>>>> develop
      	"type" : "uniCloud"
      }
     ]

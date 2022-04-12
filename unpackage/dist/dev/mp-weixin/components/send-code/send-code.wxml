@@ -1,0 +1,1 @@
+<view data-event-opts="{{[['tap',[['handleSend',['$event']]]]]}}" class="send-code-container data-v-421ceaea" bindtap="__e">{{''+(num>0?num+'s':'发送验证码')+''}}</view>
