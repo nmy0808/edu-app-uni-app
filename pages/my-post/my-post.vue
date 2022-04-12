@@ -64,7 +64,7 @@
 		},
 		onLoad() {
 			uni.setNavigationBarTitle({
-				title: '社区列表'
+				title: '我的帖子'
 			});
 		},
 		methods: {

@@ -2,11 +2,15 @@
 	<view>
 		<mescroll-body ref="mescrollRef" @init="mescrollInit" @down="downCallback" @up="upCallback">
 			<book-list v-if="type==='book'" :data='list' isRow :module='type'></book-list>
-				<test-item v-for="(item,index) in list" :key='index' 
+				<test-item v-if='type === "test"' v-for="(item,index) in list" :key='index' 
 				:index='index'
 				:data='item'
 				@change='handleTestStatusChange'
 				></test-item>
+				<my-test-item v-if='type === "my"' v-for="(item,index) in list" :key='index'
+				:index='index'
+				:data='item'
+				></my-test-item>
 		</mescroll-body>
 	</view>
 </template>
@@ -29,7 +33,9 @@
 		},
 		methods:{
 			async upCallback( {num}){
-				const {data} = await this.$http.getTestListApi(num)
+				const fetchApiMap = {'test':this.$http.getTestListApi,'my':this.$http.getTestHistoryApi}
+				const fetchApi = fetchApiMap[this.type]
+				const {data} = await fetchApi(num)
 				num === 1 ? this.list = data.rows : this.list = this.list.concat(data.rows)
 				this.mescroll.endBySize(this.list.length , data.count)
 			},

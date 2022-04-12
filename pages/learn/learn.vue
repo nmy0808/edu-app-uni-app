@@ -41,12 +41,15 @@
 			return {
 				menus: [
 					{ name: '帖子', type:'', icon:'compose', handle:()=>{
-						console.log(222);
 						uni.navigateTo({
 							url :'/pages/my-post/my-post'
 						})
 					} },
-					{ name: '考试', type:'', icon:'chat', handle:()=>{} },
+					{ name: '考试', type:'', icon:'chat', handle:()=>{
+						uni.navigateTo({
+							url :'/pages/test-list/test-list?type='+'my'
+						})
+					} },
 					{ name: '电子书', type:'', icon:'wallet', handle:()=>{} },
 				],
 				tabs: [{ name: '课程', index: 0 }, { name: '专栏', index: 1 }],
