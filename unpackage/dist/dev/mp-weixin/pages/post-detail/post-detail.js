@@ -315,7 +315,8 @@ var _mescrollMixins = _interopRequireDefault(__webpack_require__(/*! @/uni_modul
                     }_context4.next = 6;return (
                       _this4.$http.getPostReplyApi(parmas));case 6:
                     _this4.toast('评论成功');
-                    _this4.mescroll.resetUpScroll();case 8:case "end":return _context4.stop();}}}, _callee4);}));function success(_x) {return _success.apply(this, arguments);}return success;}() });
+                    _this4.mescroll.resetUpScroll();
+                    uni.$emit('getBbsList');case 9:case "end":return _context4.stop();}}}, _callee4);}));function success(_x) {return _success.apply(this, arguments);}return success;}() });
 
 
     },
@@ -343,11 +344,10 @@ var _mescrollMixins = _interopRequireDefault(__webpack_require__(/*! @/uni_modul
                 _this5.detailData.issupport = !_this5.detailData.issupport;
                 if (_this5.detailData.issupport) {
                   _this5.toast('已点赞');
-                  _this5.detailData.support_count++;
                 } else {
                   _this5.toast('取消点赞');
-                  _this5.detailData.support_count--;
-                }case 10:case "end":return _context5.stop();}}}, _callee5);}))();
+                }
+                uni.$emit('getBbsList');case 11:case "end":return _context5.stop();}}}, _callee5);}))();
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

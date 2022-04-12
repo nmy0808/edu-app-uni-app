@@ -106,6 +106,12 @@ export default {
 		});
 		this.getBbsListData();
 	},
+	mounted() {
+		uni.$on('getBbsList',this.resetUpScroll)
+	},
+	beforeDestroy() {
+		uni.$off('getBbsList',this.resetUpScroll)
+	},
 	methods: {
 		/**
 		 * 社区列表
@@ -137,11 +143,12 @@ export default {
 			params.keyword = this.keyword
 			params.bbs_id = this.bbsTemp.currentId
 			params.page = num
-			console.log(params);
 			const { data } = await this.$http.getPostListApi(params);
 			num === 1 ? this.postList = data.rows : this.postList = this.postList.concat(data.rows)
 			this.mescroll.endBySize(this.postList.length , data.count)
-			console.log(data.rows);
+		},
+		resetUpScroll(){
+			this.mescroll.resetUpScroll()
 		},
 		/**
 		 * 搜索

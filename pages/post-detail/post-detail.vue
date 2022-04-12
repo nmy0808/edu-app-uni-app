@@ -146,6 +146,7 @@ export default {
 					await this.$http.getPostReplyApi(parmas);
 					this.toast('评论成功');
 					this.mescroll.resetUpScroll();
+					uni.$emit('getBbsList')
 				}
 			});
 		},
@@ -173,11 +174,10 @@ export default {
 			this.detailData.issupport = !this.detailData.issupport;
 			if (this.detailData.issupport) {
 				this.toast('已点赞');
-				this.detailData.support_count++;
 			} else {
 				this.toast('取消点赞');
-				this.detailData.support_count--;
 			}
+			uni.$emit('getBbsList')
 		}
 	}
 };

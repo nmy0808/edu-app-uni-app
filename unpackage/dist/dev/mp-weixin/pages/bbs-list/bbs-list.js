@@ -273,6 +273,12 @@ var _mescrollMixins = _interopRequireDefault(__webpack_require__(/*! @/uni_modul
 
     this.getBbsListData();
   },
+  mounted: function mounted() {
+    uni.$on('getBbsList', this.resetUpScroll);
+  },
+  beforeDestroy: function beforeDestroy() {
+    uni.$off('getBbsList', this.resetUpScroll);
+  },
   methods: {
     /**
               * 社区列表
@@ -303,12 +309,13 @@ var _mescrollMixins = _interopRequireDefault(__webpack_require__(/*! @/uni_modul
                 params = {};
                 params.keyword = _this2.keyword;
                 params.bbs_id = _this2.bbsTemp.currentId;
-                params.page = num;
-                console.log(params);_context2.next = 8;return (
-                  _this2.$http.getPostListApi(params));case 8:_yield$_this2$$http$g = _context2.sent;data = _yield$_this2$$http$g.data;
+                params.page = num;_context2.next = 7;return (
+                  _this2.$http.getPostListApi(params));case 7:_yield$_this2$$http$g = _context2.sent;data = _yield$_this2$$http$g.data;
                 num === 1 ? _this2.postList = data.rows : _this2.postList = _this2.postList.concat(data.rows);
-                _this2.mescroll.endBySize(_this2.postList.length, data.count);
-                console.log(data.rows);case 13:case "end":return _context2.stop();}}}, _callee2);}))();
+                _this2.mescroll.endBySize(_this2.postList.length, data.count);case 11:case "end":return _context2.stop();}}}, _callee2);}))();
+    },
+    resetUpScroll: function resetUpScroll() {
+      this.mescroll.resetUpScroll();
     },
     /**
         * 搜索
