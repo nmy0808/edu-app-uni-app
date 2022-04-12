@@ -148,7 +148,6 @@ export default {
 			});
 			this.detailData = data;
 			this.type = data.type;
-			console.log(data);
 		},
 		/**
 		 * 收藏
@@ -185,12 +184,15 @@ export default {
 		 * 立即学习
 		 */
 		onLearn(){
-			console.log(22);
 		},
 		// 立即订购
 		async onSubmit(){
 			const flag = await this.$tool.isLogin({isLogin:true})
-			if(flag){
+			// 接口有问题, 如果是拼团禁止支付
+			if(this.module === 'group' || this.module === 'flashsale'){
+				return this.toast('后台接口正在维护, 暂不支持拼团和秒杀立即订购')
+			}
+			if(flag ){
 				// 跳转到订单详情页
 				const type = this.module ? this.module : 'column'
 				const id = this.detailData.id

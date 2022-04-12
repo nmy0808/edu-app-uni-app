@@ -11,7 +11,7 @@
 			</view>
 			<view class="course-item-desc-price">
 				<text class="course-price">¥ {{ data.price }}</text>
-				<text class="course-tprice">¥ {{ data.t_price }}</text>
+				<text class="course-tprice" v-if="data.t_price">¥ {{ data.t_price }}</text>
 			</view>
 		</view>
 	</view>

@@ -61,7 +61,10 @@
         </view>
       </view>
       <view class="login-auth">
-        <image class="wx-icon" src="@/static/default/wx.png" mode=""></image>
+				<!-- 微信登录 -->
+        <image class="wx-icon" src="@/static/default/wx.png" mode=""
+					@click='handleWxLogin'
+				></image>
       </view>
       <view class="login-readme" v-if="type === 'login'">
         <uni-data-checkbox
@@ -167,6 +170,34 @@ export default {
         this.handleSwitchType();
       }
     },
+		// 微信登录
+		handleWxLogin(){
+			if(this.$tool.isInWechat()){
+				// uni.navigateTo({
+				// 	url: '/pages/h5pay/h5pay'
+				// })	
+				this.$tool.getH5Code()
+			}
+			// #ifdef APP
+			uni.login({
+			  provider: 'weixin',
+			  success:  async (loginRes)=> {
+					const authResult = loginRes.authResult
+					const params = {}
+					params.type = 'app'
+					params.access_token = authResult.access_token
+					params.openid = authResult.openid
+				try{
+					 await  this.$http.oauthLoginApi(params)
+				}catch(e){
+					//TODO handle the exception
+					console.log(e+'');
+				}
+					console.log(data);
+			  }
+			});
+		// #endif
+		}
   },
 };
 </script>

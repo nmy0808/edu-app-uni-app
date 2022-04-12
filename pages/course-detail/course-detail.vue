@@ -203,6 +203,9 @@ export default {
 		// 立即订购
 		async onSubmit() {
 			const flag = await this.$tool.isLogin({ isLogin: true });
+			if(this.module === 'group' || this.module === 'flashsale'){
+				return this.toast('后台接口正在维护, 暂不支持拼团和秒杀立即订购')
+			}
 			if (flag) {
 				const typeMap = {
 					media: 'course',

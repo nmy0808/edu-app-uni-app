@@ -8,7 +8,9 @@
 		</no-login>
 		<template v-else>
 			<view class="learn-menus shadow">
-				<view class="learn-menus-item " v-for="(item,index) in menus" :key='index'>
+				<view class="learn-menus-item " v-for="(item,index) in menus" :key='index'
+					@click='item.handle'
+				>
 					<uni-icons class="learn-menus-item-icon" :type="item.icon" size="26" color="#f5cb64"></uni-icons>
 					<view class="learn-menus-item-label">
 						{{item.name}}
@@ -38,7 +40,12 @@
 		data() {
 			return {
 				menus: [
-					{ name: '帖子', type:'', icon:'compose', handle:()=>{} },
+					{ name: '帖子', type:'', icon:'compose', handle:()=>{
+						console.log(222);
+						uni.navigateTo({
+							url :'/pages/my-post/my-post'
+						})
+					} },
 					{ name: '考试', type:'', icon:'chat', handle:()=>{} },
 					{ name: '电子书', type:'', icon:'wallet', handle:()=>{} },
 				],

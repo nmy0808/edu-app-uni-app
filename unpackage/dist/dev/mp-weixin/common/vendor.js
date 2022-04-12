@@ -4988,11 +4988,11 @@ var sendDanmuApi = function sendDanmuApi(_ref3) {var content = _ref3.content,liv
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.gegProdDetailApi = exports.getOrderListApi = void 0;var _request = _interopRequireDefault(__webpack_require__(/*! @/http/request.js */ 15));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.wxpayApi = exports.createdOrderApi = exports.gegProdDetailApi = exports.getOrderListApi = void 0;var _request = _interopRequireDefault(__webpack_require__(/*! @/http/request.js */ 15));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 /**
-                                                                                                                                                                                                                                                                                                          * 获取可用优惠券列表
-                                                                                                                                                                                                                                                                                                          */
+                                                                                                                                                                                                                                                                                                                                                       * 获取可用优惠券列表
+                                                                                                                                                                                                                                                                                                                                                       */
 var getOrderListApi = function getOrderListApi(_ref) {var page = _ref.page,limit = _ref.limit;
   var url = '/mobile/order/list';
   var data = { page: page, limit: limit };
@@ -5007,7 +5007,29 @@ var gegProdDetailApi = function gegProdDetailApi(_ref2) {var type = _ref2.type,i
   var data = { type: type, id: id };
   var options = {};
   return _request.default.get(url, data, options);
-};exports.gegProdDetailApi = gegProdDetailApi;
+};
+/**
+    * 创建订单
+    * 类型：course课程，column专栏，book电子书
+    */exports.gegProdDetailApi = gegProdDetailApi;
+var createdOrderApi = function createdOrderApi(_ref3) {var goods_id = _ref3.goods_id,type = _ref3.type,_ref3$user_coupon_id = _ref3.user_coupon_id,user_coupon_id = _ref3$user_coupon_id === void 0 ? 0 : _ref3$user_coupon_id;
+  var url = '/mobile/order/save';
+  var data = { goods_id: goods_id, type: type, user_coupon_id: user_coupon_id };
+  var options = {};
+  return _request.default.post(url, data, options);
+};
+/**
+    * 微信app/小程序/H5支付订单
+    * -订单号
+    * -app支付，mp小程序支付，h5网页支付
+    * -type等于mp和h5时必填code
+    */exports.createdOrderApi = createdOrderApi;
+var wxpayApi = function wxpayApi(_ref4) {var no = _ref4.no,type = _ref4.type,code = _ref4.code;
+  var url = '/mobile/order/wxpay';
+  var data = { no: no, type: type, code: code };
+  var options = {};
+  return _request.default.post(url, data, options);
+};exports.wxpayApi = wxpayApi;
 
 /***/ }),
 

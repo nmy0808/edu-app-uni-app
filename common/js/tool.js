@@ -213,6 +213,7 @@ export default {
 				.host
 			href = h[0] + '/#/' + h[1]
 		}
+		return
 		let local = encodeURIComponent(href);
 		const url =
 			`https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${local}&response_type=code&scope=snsapi_userinfo&state=STATE&connect_redirect=1#wechat_redirect`;

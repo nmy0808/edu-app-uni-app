@@ -22,7 +22,7 @@ export const getCouponByIdApi= (coupon_id) => {
 /**
  * 我的优惠券列表
  */
-export const getMyCouponListApi= (page) => {
+export const getMyCouponListApi= (page=1) => {
 	const url = '/mobile/user_coupon'
 	const data = {page}
 	const options = {}

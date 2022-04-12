@@ -197,15 +197,15 @@
             }
             
         }
-        ,{
-            "path" : "pages/bbs/bbs",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
+        // ,{
+        //     "path" : "pages/bbs/bbs",
+        //     "style" :                                                                                    
+        //     {
+        //         "navigationBarTitleText": "",
+        //         "enablePullDownRefresh": false
+        //     }
             
-        }
+        // }
         ,{
             "path" : "pages/bbs-list/bbs-list",
             "style" :                                                                                    
@@ -229,6 +229,24 @@
         }
         ,{
             "path" : "pages/post-detail/post-detail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/h5pay/h5pay",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/my-post/my-post",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
