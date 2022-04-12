@@ -1,7 +1,9 @@
 <template>
 	<view class="book-list">
 		<template v-for="(item, index) in data" >
-			<book-item :data='item' :key='index' isRow @click.native='toPageBookDetail(item)'></book-item>
+			<book-item :data='item' :key='index' isRow @click.native='toPageBookDetail(item)'
+			:isMy='isMy'
+			></book-item>
 		</template>
 	</view>
 </template>
@@ -15,6 +17,10 @@ export default {
 			default: () => {
 				return [];
 			}
+		},
+		isMy:{
+			type: Boolean,
+			default:false
 		}
 	},
 	data() {

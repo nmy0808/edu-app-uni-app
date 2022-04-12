@@ -33,6 +33,7 @@
 				:bookId="id"
 				:data="detailData.book_details"
 				isBook
+				:isbuy="detailData.isbuy"
 			></course-content>
 		</template>
 		<view class="course-detail-buy">
@@ -82,7 +83,6 @@
 				uni.setNavigationBarTitle({
 					title: data.title
 				})
-				console.log(data);
 			},
 			// 立即订购
 			async onSubmit(){
@@ -95,6 +95,10 @@
 						url: `/pages/order-detail/order-detail?type=${type}&id=${id}`
 					})
 				}
+			},
+			// 
+			handleCollect(){
+				console.log(22);
 			}
 		}
 	}

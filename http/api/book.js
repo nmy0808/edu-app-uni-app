@@ -9,6 +9,15 @@ export const getBookListApi= (page) => {
 	return request.get(url, data, options)
 }
 /**
+ * 我的电子书列表
+ */
+export const getMyBookListApi= (page) => {
+	const url = '/mobile/mybook'
+	const data = { page }
+	const options = {  }
+	return request.get(url, data, options)
+}
+/**
  * 电子书详情
  */
 export const getBookDetail= ({id}) => {

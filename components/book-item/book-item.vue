@@ -6,13 +6,16 @@
 		</view>
 		<view class="course-item-desc">
 			<view class="course-item-desc-title text-ellipsis">{{ data.title }}</view>
-			<view class="course-item-desc-subtitle text-ellipsis">
-			{{ data.sub_count }}人订阅
-			</view>
-			<view class="course-item-desc-price">
-				<text class="course-price">¥ {{ data.price }}</text>
-				<text class="course-tprice">¥ {{ data.t_price }}</text>
-			</view>
+			<template v-if="!isMy">
+				<view class="course-item-desc-subtitle text-ellipsis">
+				{{ data.sub_count }}人订阅
+				</view>
+				<view class="course-item-desc-price">
+					<text class="course-price">¥ {{ data.price }}</text>
+					<text class="course-tprice">¥ {{ data.t_price }}</text>
+				</view>
+			</template>
+			
 		</view>
 	</view>
 </template>
@@ -37,6 +40,10 @@ export default {
 			default: () => {
 				return {};
 			}
+		},
+		isMy:{
+			type: Boolean,
+			default:false
 		}
 	},
 	data() {

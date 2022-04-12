@@ -50,7 +50,11 @@
 							url :'/pages/test-list/test-list?type='+'my'
 						})
 					} },
-					{ name: '电子书', type:'', icon:'wallet', handle:()=>{} },
+					{ name: '电子书', type:'', icon:'wallet', handle:()=>{
+						uni.navigateTo({
+							url :'/pages/my-book/my-book'
+						})
+					} },
 				],
 				tabs: [{ name: '课程', index: 0 }, { name: '专栏', index: 1 }],
 				tabIndex: 0

@@ -39,6 +39,10 @@ export default {
 			type: Boolean,
 			default: false
 		},
+		isbuy: {
+			type: Boolean,
+			default: false
+		},
 		data: {
 			type: Array,
 			default: () => {
